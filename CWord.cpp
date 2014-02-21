@@ -2,21 +2,21 @@
 
 CLong CWord::GetCount()
 {
-    return $count;
+    return _count;
 }
 
 void CWord::increment()
 {
-    $count++;
+    _count++;
 }
 
 void CWord::SetWord( const string& word )
 {
-    $word = word;
-    $count++;
+    _word = word;
+    _count++;
 }
 
 string CWord::GetString()
 {
-    return $word;
+    return _word;
 }

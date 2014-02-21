@@ -17,3 +17,4 @@ xcode/Words.xcodeproj/project.xcworkspace/xcuserdata
 xcode/Build/Debug/Words
 xcode/Build/Intermediates
 xcode/DerivedData/
+*.exe
