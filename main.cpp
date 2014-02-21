@@ -27,12 +27,6 @@ void readfile( const string& path, CMap& map )
 
         while ( x != ' ' )
         {
-//            if( "." == x )
-//            {
-
-//            }
-//            else
-
             word = word + x;
             x = file.get();
         }
@@ -50,8 +44,6 @@ void readfile( const string& path, CMap& map )
 
         word.clear();
     }
-
-    //cout << word << endl;
 
     file.close();
 }

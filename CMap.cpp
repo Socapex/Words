@@ -7,7 +7,7 @@ CMap::CMap()
 CMap& CMap::insert(  const string& str  )
 {
 
-    pair<CIterator,bool> ret = $map.insert( CPair(str, CMap() ));
+    pair<CIterator,bool> ret = _map.insert( CPair(str, CMap()) );
     if( !ret.second )
     {
         ret.first->second.GetWord().increment();
@@ -24,22 +24,22 @@ CMap& CMap::insert(  const string& str  )
 
 CMap& CMap::GetWordMap( const string& str )
 {
-    return ( $map.find( str )->second );
+    return ( _map.find( str )->second );
 }
 
 CWord& CMap::GetWord()
 {
-    return $word;
+    return _word;
 }
 
 void CMap::SetWord( const string& word )
 {
-    $word.SetWord( word );
+    _word.SetWord( word );
 }
 
 void CMap::Print()
 {
-    for( CIterator i = $map.begin(); i != $map.end(); ++i )
+    for( CIterator i = _map.begin(); i != _map.end(); ++i )
     {
 
         cout << i->second.GetWord().GetString() << "    (" << i->second.GetWord().GetCount() << ") ";
@@ -49,7 +49,7 @@ void CMap::Print()
 
 unsigned long CMap::GetSize()
 {
-    return $map.size();
+    return _map.size();
 }
 
 //CMap& CMap::operator[] ( const string& str )

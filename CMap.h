@@ -41,14 +41,14 @@ public:
 
     map<CTYPE>& GetMap()
     {
-        return $map;
+        return _map;
     }
 
     //CWord& operator[] ( const string& str );
 
 private:
-    map<CTYPE> $map;
-    CWord $word;
+    map<CTYPE> _map;
+    CWord _word;
 };
 
 #endif
