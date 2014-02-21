@@ -17,7 +17,7 @@ class CWord
 public:
     CWord():
     // Members
-        $count( 0 )
+        _count( 0 )
     {
         _attributes.push_back( new CString( "MyString") );
         _attributes.push_back( new CCount() );
@@ -25,7 +25,7 @@ public:
 
     CWord( const string& word ):
     // Members
-        $word(word), $count(1)
+        _word(word), _count(1)
     {
 
     }
@@ -44,8 +44,8 @@ public:
     string GetString();
 
 private:
-    string $word;
-    CLong $count;
+    string _word;
+    CLong _count;
 
     vector< CAttribute* > _attributes;
 };
