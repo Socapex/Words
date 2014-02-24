@@ -52,6 +52,11 @@ unsigned long CMap::GetSize()
     return _map.size();
 }
 
+//bool CMap::Save( const string& path )
+//{
+//	return 0;
+//}
+
 //CMap& CMap::operator[] ( const string& str )
 //{
 //    pair<CInterator,bool> ret = $map.insert( CPair(str,CWord(str) ));

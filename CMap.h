@@ -44,6 +44,8 @@ public:
         return _map;
     }
 
+	//bool Save( const string& path );
+
     //CWord& operator[] ( const string& str );
 
 private:
