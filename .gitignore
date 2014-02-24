@@ -12,7 +12,14 @@
 *.la
 *.a
 
-# Windows
+# (MAC) XCODE
+xcode/Words.xcodeproj/xcuserdata
+xcode/Words.xcodeproj/project.xcworkspace/xcuserdata
+xcode/Build/Debug/Words
+xcode/Build/Intermediates
+xcode/DerivedData/
+
+# (WINDOWS) Visual Studio 2013
 *.exe
 *.vcxproj.user
 *.obj
