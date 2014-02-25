@@ -1,0 +1,5 @@
+error LNK2038: mismatch detected for 'RuntimeLibrary'
+
+This problem arises in newer versions of Visual C++ (the older versions usually just silently linked the program and it would crash and burn at run time!) It means that some of the libraries you are linking with your program (or even some of the source files inside your program itself) are *using different versions of the CRT (the C RunTime library.)
+
+To correct this error, you need to go into your Project Properties (and/or those of the libraries you are using,) then into C/C++, then Code Generation, and check the value of Runtime Library; this should be exactly the same for all the files and libraries you are linking together. (The rules are a little more relaxed for linking with DLLs, but I'm not going to go into the "why" and into more details here.)
