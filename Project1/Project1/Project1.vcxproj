@@ -66,16 +66,21 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\CAttribute.cpp" />
+    <ClCompile Include="..\..\CInputEnglish.cpp" />
     <ClCompile Include="..\..\CMap.cpp" />
     <ClCompile Include="..\..\CDataBase.cpp" />
     <ClCompile Include="..\..\CWord.cpp" />
+    <ClCompile Include="..\..\getopt.c" />
+    <ClCompile Include="..\..\getopt_long.c" />
     <ClCompile Include="..\..\main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\CAttribute.h" />
+    <ClInclude Include="..\..\CInputEnglish.h" />
     <ClInclude Include="..\..\CMap.h" />
     <ClInclude Include="..\..\CDataBase.h" />
     <ClInclude Include="..\..\CWord.h" />
+    <ClInclude Include="..\..\getopt.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

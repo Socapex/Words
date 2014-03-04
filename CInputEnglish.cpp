@@ -15,6 +15,7 @@ CInputEnglish::CInputEnglish(CMap &map)
     _currentWord.clear();
 }
 
+
 void CInputEnglish::ReadStdin()
 {
     char c;
@@ -54,7 +55,6 @@ int CInputEnglish::ReadFile(string filename)
     file.close();
     return 0;
 }
-
 
 
 void CInputEnglish::parseText(char &c)
@@ -161,9 +161,10 @@ void CInputEnglish::addWord()
 
 void CInputEnglish::insertChain()
 {
-    // Insert the chain
+    // Point to our map, it will be changed after every insert.
     CMap* previousMap = _map;
 
+    // Insert the chain
     for (auto x : _markovChain)
     {
         previousMap = &previousMap->insert(x);
