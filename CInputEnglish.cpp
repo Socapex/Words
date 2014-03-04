@@ -144,9 +144,10 @@ void CInputEnglish::addWord(string& word)
 
 void CInputEnglish::insertChain()
 {
-    // Insert the chain
+    // Point to our map, it will be changed after every insert.
     CMap* previousMap = _map;
 
+    // Insert the chain
     for (auto x : _markovChain)
     {
         previousMap = &previousMap->insert(x);
