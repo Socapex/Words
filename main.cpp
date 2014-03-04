@@ -165,57 +165,48 @@ int main(int argc, char* argv[])
 
 	//readfile("test.txt", mymap);
 
-	//for (int i = 0; i < 5000; i++)
-	//	cout << "Process--------------" << i << '\xd';
-
 	CDataBase data_base(mymap);
 	data_base.SaveData("cdb");
 	data_base.ReadData("cdb");
 
-	//data_base.PrintMap();
-	generateSentence(mymap, 5, 8);
+	generateSentence(mymap, 20, 12);
 
-	
-
-
-//    print_by_weight( map );
-
-    //cout << "------------------------------------" << endl;
-    //cout << "THE STUDY" << endl;
-    //cout << "------------------------------------" << endl;
-    //print_by_weight( map.GetWordMap("study").GetWordMap("of") );
-
-//#ifdef _MSC_VER >= 1600
-	//system("pause");
-	//cout << "Test" << endl;
-//#endif
-    return 0;
+	return 0;
 }
 
+
+// Sentenses must contain at least three words.
 void generateSentence(CMap& mymap, 
 					  const unsigned int& nb_sentense, 
 					  const unsigned int& length)
 {	
+    // Generate "nb_sentense" number of sentenses.
 	for (unsigned int n = 0; n < nb_sentense; ++n)
 	{
-		vector<string> sentence;
+        // Vector of size "length" words contaning the sentense.
+		vector<string> sentense(length);
+
+		// Get three first words.
 		CMap* m1 = &GetOneOfTopThree(mymap);
 		CMap* m2 = &GetOneOfTopThree(*m1);
 		CMap* m3 = &GetOneOfTopThree(*m2);
 
-		sentence.push_back(m1->GetWord().GetString());
-		sentence.push_back(m2->GetWord().GetString());
-		sentence.push_back(m3->GetWord().GetString());
-
+		// Fill the vector with the first three words in the sentense.
+		sentense[0] = m1->GetWord().GetString();
+		sentense[1] = m2->GetWord().GetString();
+		sentense[2] = m3->GetWord().GetString();
+	
+		// Add the rest of the words to the sentense.
 		for (unsigned int i = 3; i < length; ++i)
 		{
 			m1 = &mymap.GetWordMap(m2->GetWord().GetString());
 			m2 = &m1->GetWordMap(m3->GetWord().GetString());
 			m3 = &GetOneOfTopThree(*m2);
-			sentence.push_back(m3->GetWord().GetString());
+			sentense[i] = m3->GetWord().GetString();
 		}
 
-		for (string s : sentence)
+		// Show sentense.
+		for (string s : sentense)
 		{
 			cout << s << " ";
 		}
