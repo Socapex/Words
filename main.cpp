@@ -6,8 +6,17 @@
 #include <algorithm>
 #include <map>
 #include <time.h>
-#include "getopt.h"
 #include <stdlib.h>
+
+// TEMPORAIRE! Juste pour debugger un truc :)
+#ifdef __APPLE__
+#include <unistd.h>
+#include <signal.h>
+#include <getopt.h>
+#else
+#include "getopt.h"
+#endif
+
 
 #include "CMap.h"
 #include "CDataBase.h"
@@ -104,6 +113,11 @@ CMap& GetFirstWord( CMap& m )
 
 int main(int argc, char* argv[])
 {
+    //Wait for debugger to attach
+    //Mac only je pense...
+    //kill(getpid(), SIGSTOP);
+
+
     // Initialise stuff
     CMap mymap;
     CInputEnglish inputEnglish(mymap);
@@ -134,7 +148,8 @@ int main(int argc, char* argv[])
         switch (opt) {
             case 'i':
 //                cout << " got i" << endl;
-                inputEnglish.ReadFile((string)optarg);
+                if (inputEnglish.ReadFile((string)optarg) == -1)
+                    return -1;
                 break;
 
             case 'm':
@@ -143,10 +158,12 @@ int main(int argc, char* argv[])
 
             case 's':
 //                cout << "got stdin" << endl;
+                inputEnglish.ReadStdin();
                 break;
 
             case 'h':
                 printHelp();
+                return 0;
                 break;
 
             case '?':
