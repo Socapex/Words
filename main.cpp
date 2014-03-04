@@ -131,7 +131,7 @@ int main(int argc, char* argv[])
     {
         switch (opt) {
             case 'i':
-                cout << " got i" << endl;
+//                cout << " got i" << endl;
                 inputEnglish.ReadFile((string)optarg);
                 break;
 
@@ -140,7 +140,7 @@ int main(int argc, char* argv[])
                 break;
 
             case 's':
-                cout << "got stdin" << endl;
+//                cout << "got stdin" << endl;
                 break;
 
             case 'h':
