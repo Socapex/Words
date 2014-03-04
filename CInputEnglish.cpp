@@ -11,6 +11,7 @@
 CInputEnglish::CInputEnglish(CMap &map)
 {
     _map = &map;
+    _markovLength = 3;
 }
 
 void CInputEnglish::ReadStdin()
@@ -41,28 +42,55 @@ void CInputEnglish::ReadFile(string filename)
             switch( c )
             {
                 case ' ':
-                    addWord(words, word, count );
-                    //cout << word << endl;
+//                    cout << word << endl;
+                    addWord(word);
                     break;
 
+                // Terminating strings
+                case '.':
+                    //Get the first word.
+                    addWord(word);
+                    //Now process .
+                    word = ".";
+                    addWord(word);
+                    break;
+
+                case '?':
+                    addWord(word);
+                    word = ".";
+                    addWord(word);
+                    break;
+
+                case '!':
+                    addWord(word);
+                    word = ".";
+                    addWord(word);
+                    break;
+
+                // Custom stuff
                 case '\n':
                     if( word.empty() )
                     {
-                        addWord(words, word, count );
+                        addWord(word);
                     }
                     break;
 
+                case '\'':
+                    //Do nothing for now
+                    break;
+
                 default:
+//                    cout << c << endl;
                     word = word + c;
             }
         }
         else if( word.empty() )
         {
-            addWord(words, word, count );
+            addWord(word);
         }
     }
     
-    _map->GetMap().erase("");
+    //_map->GetMap().erase("");
     file.close();
 
 }
@@ -71,21 +99,46 @@ void CInputEnglish::ReadFile(string filename)
 
 
 
-void CInputEnglish::addWord(string* words, string& word, unsigned int& count )
+void CInputEnglish::addWord(string& word)
 {
-    words[2] = words[1];
-    words[1] = words[0];
-    words[0] = word;
-    if( count > 2 )
+
+    cout << word << endl;
+
+    // Check beginning of text
+    if (_markovChain.size() < _markovLength)
     {
-        _map->insert( words[2] ).insert( words[1] ).insert( words[0] );
+        _markovChain.push_back(word);
+
+        // Reached the correct size?
+        if (_markovChain.size() == _markovLength)
+            insertChain();
     }
     else
     {
-        count++;
+        // Make the new chain
+        _markovChain.pop_front();
+        _markovChain.push_back(word);
+
+        insertChain();
     }
+
+    //_map->insert( words[2] ).insert( words[1] ).insert( words[0] );
+
     word.clear();
 }
+
+
+void CInputEnglish::insertChain()
+{
+    // Insert the chain
+    CMap* previousMap = _map;
+
+    for (auto x : _markovChain)
+    {
+        previousMap = &previousMap->insert(x);
+    }
+}
+
 
 void CInputEnglish::setMarkovLength(const int &length)
 {

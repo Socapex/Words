@@ -12,6 +12,7 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <list>
 
 #include "CMap.h"
 
@@ -27,9 +28,11 @@ public:
     void setMarkovLength(const int& length);
 
 private:
-    void addWord(string* words, string &word, unsigned int &count);
+    void addWord(string &word);
+    void insertChain();
 
     CMap* _map;
+    list<string> _markovChain;
     int _markovLength;
 };
 
