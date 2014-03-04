@@ -16,6 +16,8 @@ class CMap;
 typedef pair<CTYPE> CPair;
 typedef map<CTYPE>::iterator CIterator;
 
+
+
 class CMap
 {
 public:
@@ -54,5 +56,9 @@ private:
     map<CTYPE> _map;
     CWord _word;
 };
+
+
+// Function pointer
+extern bool orderCMapByCount(pair<CTYPE> first, pair<CTYPE> second);
 
 #endif

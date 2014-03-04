@@ -32,3 +32,6 @@ xcode/DerivedData/
 *.suo
 *.v12.suo
 *.exe.stackdump
+
+#our stuff
+cdb

@@ -67,42 +67,32 @@ void CInputEnglish::parseText(char &c)
             break;
 
         case ',':
-            addWord();
-            _currentWord = ",";
-            addWord();
+            addCharacter(",");
             break;
 
         case ';':
-            addWord();
-            _currentWord = ";";
-            addWord();
+            addCharacter(";");
+            break;
+
+        case ':':
+            addCharacter(":");
             break;
 
         case '-':
-            addWord();
-            _currentWord = "-";
-            addWord();
+            addCharacter("-");
             break;
 
             // Terminating strings
         case '.':
-            //Get the first .
-            addWord();
-            //Now process .
-            _currentWord = ".";
-            addWord();
+            addCharacter(".");
             break;
 
         case '?':
-            addWord();
-            _currentWord = ".";
-            addWord();
+            addCharacter("?");
             break;
 
         case '!':
-            addWord();
-            _currentWord = ".";
-            addWord();
+            addCharacter("!");
             break;
 
             // Custom stuff
@@ -110,14 +100,26 @@ void CInputEnglish::parseText(char &c)
             addWord();
             break;
 
-        case '\'':
             //Do nothing for now
+        case '\'':
             break;
         case '"':
             break;
         case '(':
             break;
         case ')':
+            break;
+        case '{':
+            break;
+        case '}':
+            break;
+        case '[':
+            break;
+        case ']':
+            break;
+        case '_':
+            break;
+        case '*':
             break;
 
         default:
@@ -135,7 +137,7 @@ void CInputEnglish::addWord()
         return;
     }
 
-    cout << _currentWord << endl;
+    //cout << _currentWord << endl;
 
     // Check beginning of text
     if (_markovChain.size() < _markovLength)
@@ -156,6 +158,13 @@ void CInputEnglish::addWord()
     }
 
     _currentWord.clear();
+}
+
+void CInputEnglish::addCharacter(string c)
+{
+    addWord();
+    _currentWord = c;
+    addWord();
 }
 
 

@@ -1,5 +1,10 @@
 #include "CMap.h"
 
+bool orderCMapByCount(pair<CTYPE> first, pair<CTYPE> second)
+{
+    return first.second.GetWord().GetCount() > second.second.GetWord().GetCount();
+}
+
 CMap::CMap()
 {
 }

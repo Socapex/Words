@@ -30,6 +30,7 @@ public:
 private:
     void parseText(char &c);
     void addWord();
+    void addCharacter(string c);
     void insertChain();
 
     CMap* _map;

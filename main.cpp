@@ -9,18 +9,20 @@
 #include <stdlib.h>
 
 // TEMPORAIRE! Juste pour debugger un truc :)
-#ifdef __APPLE__
-#include <unistd.h>
-#include <signal.h>
-#include <getopt.h>
-#else
+//#ifdef __APPLE__
+//#include <unistd.h>
+//#include <signal.h>
+//#include <getopt.h>
+//#else
 #include "getopt.h"
-#endif
+//#endif
 
 
 #include "CMap.h"
 #include "CDataBase.h"
 #include "CInputEnglish.h"
+#include "CGenerateSentence.h"
+#include "CAnalysis.h"
 
 using namespace std;
 
@@ -40,48 +42,40 @@ void printHelp()
     << "Options" << endl
     << "========" << endl << endl;
 
+    //Input
     cout << "* Input:" << endl << endl;
-    cout << setw(20) << left << "--stdin" << "Read from input pipe." << endl;
-    cout << setw(20) << left << "-i [filename]" << "Read from text file." << endl;
-    cout << setw(20) << left << "-m [number]" << "Markov length (default 3)." << endl;
+    cout << setw(25) << left << "--stdin" << "Read from input pipe." << endl;
+    cout << setw(25) << left << "-i [filename]" << "Read from text file." << endl;
+    cout << setw(25) << left << "-m [number]" << "Markov length (default 3)." << endl;
+
+    //Output
+    cout << endl << "* Output:" << endl << endl;
+    cout << setw(25) << left << "-g [number]" << "Generate x number of sentences." << endl;
+    cout << setw(25) << left << "--bruteforce" << "Generate all sentences." << endl;
+    cout << setw(25) << left << "--stdout" << "Write to general output." << endl;
+    cout << setw(25) << left << "-o [filename]" << "Write to text file." << endl;
+    cout << setw(25) << left << "--min-words [number]" << "Minimum sentence words"
+        " (default 3)." << endl;
+    cout << setw(25) << left << "--max-words [number]" << "Maximum sentence words"
+        " (default none)." << endl;
+    cout << setw(25) << left << "--min-chars [number]" << "Minimum sentence characters,"
+        "including spaces (default none)." << endl;
+    cout << setw(25) << left << "--max-chars [number]" << "Maximum sentence characters,"
+        "including spaces (default none)." << endl;
+
+    //Analysis
+    cout << endl << "* Analysis:" << endl;
+    cout << setw(25) << left << "--top-words [number]" << "Print most used words." << endl;
 
     cout << endl << endl;
 }
 
 
-bool myFunction(pair<CTYPE> first, pair<CTYPE> second)
-{
-    return first.second.GetWord().GetCount() > second.second.GetWord().GetCount();
-}
-
-void print_by_weight( CMap& m )
-{
-    map<CTYPE> myMap = m.GetMap();
-    vector< pair<CTYPE> > myVec( myMap.begin(), myMap.end() );
-    sort( myVec.begin(),myVec.end(),&myFunction );
-
-    for( unsigned int i = 0; i < myVec.size(); i++ )
-    {
-        cout << myVec[i].first << "(" << myVec[i].second.GetWord().GetCount() << ")" << endl;
-    }
-}
-
-// Not the best way to do it.
-CMap& GetMostUse( CMap& m )
-{
-    map<CTYPE> myMap = m.GetMap();
-    vector< pair<CTYPE> > myVec( myMap.begin(), myMap.end() );
-	
-    sort( myVec.begin(), myVec.end(), &myFunction );
-
-	return m.GetWordMap(myVec[0].first);
-}
-
 CMap& GetOneOfTopThree( CMap& m )
 {
     map<CTYPE> myMap = m.GetMap();
     vector< pair<CTYPE> > myVec( myMap.begin(), myMap.end() );
-    sort( myVec.begin(),myVec.end(),&myFunction );
+    sort( myVec.begin(),myVec.end(),&orderCMapByCount );
     //cout << (rand() % 3) << endl;
 
     if( myVec.size() > 3 )
@@ -104,12 +98,14 @@ CMap& GetFirstWord( CMap& m )
 {
     map<CTYPE> myMap = m.GetMap();
     vector< pair<CTYPE> > myVec( myMap.begin(), myMap.end() );
-    sort( myVec.begin(),myVec.end(),&myFunction );
+    sort( myVec.begin(),myVec.end(),&orderCMapByCount );
 
     //rand() % 10
     return m.GetWordMap( myVec[rand() % 8].first );
 
 }
+
+
 
 int main(int argc, char* argv[])
 {
@@ -121,6 +117,9 @@ int main(int argc, char* argv[])
     // Initialise stuff
     CMap mymap;
     CInputEnglish inputEnglish(mymap);
+    CGenerateSentence generator(mymap);
+    CAnalysis analyser(mymap);
+
 
 
     //MENU
@@ -133,10 +132,25 @@ int main(int argc, char* argv[])
     //http://www.gnu.org/software/libc/manual/html_node/Getopt-Long-Option-Example.html
     static struct option long_options[] =
     {
-        {"help",    no_argument,        0, 'h'},
-        {"stdin",   no_argument,        0, 's'},
-        {"i",       required_argument,  0, 'b'},
-        {"m",       required_argument,  0, 'm'},
+        {"help",        no_argument,        0, 'h'},
+
+        //Input
+        {"stdin",       no_argument,        0, 's'},
+        {"i",           required_argument,  0, 'b'},
+        {"m",           required_argument,  0, 'm'},
+
+        //Output
+        {"g",           required_argument,  0, 'g'},
+        {"bruteforce",  no_argument,        0, 'B'},
+        {"stdout",      no_argument,        0, 'S'},
+        {"o",           required_argument,  0, 'o'},
+        {"min-words",   required_argument,  0, 'w'},
+        {"max-words",   required_argument,  0, 'W'},
+        {"min-chars",   required_argument,  0, 'c'},
+        {"max-chars",   required_argument,  0, 'C'},
+
+        //Analysis & Debug
+        {"top-words",   required_argument,  0, 't'},
         {0, 0, 0, 0}
     };
     int option_index = 0;
@@ -146,8 +160,13 @@ int main(int argc, char* argv[])
            != -1)
     {
         switch (opt) {
+            case 'h':
+                printHelp();
+                return 0;
+                break;
+
+        //Input
             case 'i':
-//                cout << " got i" << endl;
                 if (inputEnglish.ReadFile((string)optarg) == -1)
                     return -1;
                 break;
@@ -157,17 +176,37 @@ int main(int argc, char* argv[])
                 break;
 
             case 's':
-//                cout << "got stdin" << endl;
                 inputEnglish.ReadStdin();
                 break;
 
-            case 'h':
-                printHelp();
-                return 0;
+            //Output
+            case 'g':
+                generator.generate(atoi(optarg));
                 break;
 
+            case 'w':
+                generator.setMinWords(atoi(optarg));
+                break;
+            case 'W':
+                generator.setMaxWords(atoi(optarg));
+                break;
+            case 'c':
+                generator.setMinChars(atoi(optarg));
+                break;
+            case 'C':
+                generator.setMaxChars(atoi(optarg));
+                break;            
+
+            //Analysis
+            case 't':
+                analyser.PrintMostUsed(atoi(optarg));
+                break;
+
+
+
+
             case '?':
-                cout << "dfgdfgdf" << endl;
+                cout << "What happened?" << endl;
                 return 0;
                 break;
                 
