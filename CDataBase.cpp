@@ -9,7 +9,7 @@ bool CDataBase::SaveData(const string& path)
 	// Root.
 	//-----------------------------------------------------------
 	uint8_t s = _root.GetWord().GetString().size();
-	uint32_t nCWord = _root.GetSize();
+	unsigned long nCWord = _root.GetSize();
 
 	//cout << "ROOT SIZE : " << _root->GetSize() << endl;
 

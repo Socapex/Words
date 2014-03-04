@@ -1,0 +1,184 @@
+Tgtest-static
+v6
+r1
+cCheck dependencies
+cCompileC Build/Intermediates/gtest.build/Debug/gtest-static.build/Objects-normal/i386/gtest-all.o /Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/src/gtest-all.cc normal i386 c++ com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC Build/Intermediates/gtest.build/Debug/gtest-static.build/Objects-normal/x86_64/gtest-all.o /Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/src/gtest-all.cc normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
+cLibtool /Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/xcode/Build/Intermediates/gtest.build/Debug/gtest-static.build/Objects-normal/i386/libgtest.a normal i386
+cLibtool /Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/xcode/Build/Intermediates/gtest.build/Debug/gtest-static.build/Objects-normal/x86_64/libgtest.a normal x86_64
+cCreateUniversalBinary /Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/xcode/Build/Debug/libgtest.a normal i386\ x86_64
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk
+c000000005243E79F00000000000000AA
+t1380181919
+s170
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/SDKSettings.plist
+c0000000052E0A2D5000000000000044C
+t1390453461
+s1100
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/CoreServices/SystemVersion.plist
+c0000000052E0A2D500000000000001DB
+t1390453461
+s475
+
+N/Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/src/gtest-all.cc
+c00000000531505910000000000000871
+t1393886609
+s2161
+
+N/Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/xcode/Build/Debug/libgtest.a
+t2
+s0
+
+N/Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/xcode/Build/Intermediates/gtest.build/Debug/gtest-static.build/Objects-normal/i386/gtest-all.o
+t1393896486
+s1470856
+
+N/Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/xcode/Build/Intermediates/gtest.build/Debug/gtest-static.build/Objects-normal/i386/gtest.LinkFileList
+c0000000053152C2400000000000000AA
+t1393896484
+s170
+
+N/Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/xcode/Build/Intermediates/gtest.build/Debug/gtest-static.build/Objects-normal/i386/libgtest.a
+t1393896486
+s1593488
+
+N/Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/xcode/Build/Intermediates/gtest.build/Debug/gtest-static.build/Objects-normal/x86_64/gtest-all.o
+t1393896486
+s1499656
+
+N/Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/xcode/Build/Intermediates/gtest.build/Debug/gtest-static.build/Objects-normal/x86_64/gtest.LinkFileList
+c0000000053152C2400000000000000AC
+t1393896484
+s172
+
+N/Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/xcode/Build/Intermediates/gtest.build/Debug/gtest-static.build/Objects-normal/x86_64/libgtest.a
+t1393896486
+s1622288
+
+CBuild AST from /Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/src/gtest-all.cc
+r0
+
+CCheck dependencies
+r0
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection18"Check dependencies18"Check dependencies3faa15a463c5b841^7ae324a463c5b841^---0#1#1#--18"Check dependencies36"9B138268-D30B-4FE9-80AF-12871C68795C-
+
+CCompileC Build/Intermediates/gtest.build/Debug/gtest-static.build/Objects-normal/i386/gtest-all.o /Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/src/gtest-all.cc normal i386 c++ com.apple.compilers.llvm.clang.1_0.compiler
+s415589284.142448
+e415589286.446715
+r1
+xCompileC
+xBuild/Intermediates/gtest.build/Debug/gtest-static.build/Objects-normal/i386/gtest-all.o
+x/Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/src/gtest-all.cc
+xnormal
+xi386
+xc++
+xcom.apple.compilers.llvm.clang.1_0.compiler
+d/Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/src/gtest-all.cc
+d/Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/include/gtest/gtest.h
+d/Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/include/gtest/internal/gtest-internal.h
+d/Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/include/gtest/internal/gtest-port.h
+d/Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/include/gtest/gtest-message.h
+d/Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/include/gtest/internal/gtest-string.h
+d/Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/include/gtest/internal/gtest-filepath.h
+d/Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/include/gtest/internal/gtest-type-util.h
+d/Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/include/gtest/gtest-death-test.h
+d/Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/include/gtest/internal/gtest-death-test-internal.h
+d/Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/include/gtest/gtest-param-test.h
+d/Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/include/gtest/internal/gtest-param-util.h
+d/Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/include/gtest/internal/gtest-linked_ptr.h
+d/Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/include/gtest/gtest-printers.h
+d/Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/include/gtest/internal/gtest-param-util-generated.h
+d/Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/include/gtest/gtest_prod.h
+d/Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/include/gtest/gtest-test-part.h
+d/Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/include/gtest/gtest-typed-test.h
+d/Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/include/gtest/gtest_pred_impl.h
+d/Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/src/gtest.cc
+d/Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/include/gtest/gtest-spi.h
+d/Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/src/gtest-internal-inl.h
+d/Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/src/gtest-death-test.cc
+d/Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/src/gtest-filepath.cc
+d/Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/src/gtest-port.cc
+d/Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/src/gtest-printers.cc
+d/Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/src/gtest-test-part.cc
+d/Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/src/gtest-typed-test.cc
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection99"Compile /Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/src/gtest-all.cc249"CompileC Build/Intermediates/gtest.build/Debug/gtest-static.build/Objects-normal/i386/gtest-all.o /Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/src/gtest-all.cc normal i386 c++ com.apple.compilers.llvm.clang.1_0.compilerd59424a463c5b841^a35c72a663c5b841^---0#0#1#-19%DVTDocumentLocation2@98"file:///Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/src/gtest-all.cc0000000000000000^3386"CompileC Build/Intermediates/gtest.build/Debug/gtest-static.build/Objects-normal/i386/gtest-all.o /Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/src/gtest-all.cc normal i386 c++ com.apple.compilers.llvm.clang.1_0.compiler    cd /Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/xcode    setenv LANG en_US.US-ASCII    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x c++ -arch i386 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-return-type -Wno-non-virtual-dtor -Wno-overloaded-virtual -Wno-exit-time-destructors -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wno-unused-variable -Wunused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-constant-conversion -Wno-int-conversion -Wno-bool-conversion -Wno-enum-conversion -Wno-shorten-64-to-32 -Wno-newline-eof -Wno-c++11-extensions -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk -fasm-blocks -fstrict-aliasing -Wdeprecated-declarations -Winvalid-offsetof -mmacosx-version-min=10.4 -g -fvisibility=hidden -fvisibility-inlines-hidden -Wno-sign-conversion -iquote /Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/xcode/Build/Intermediates/gtest.build/Debug/gtest-static.build/gtest-generated-files.hmap -I/Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/xcode/Build/Intermediates/gtest.build/Debug/gtest-static.build/gtest-own-target-headers.hmap -I/Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/xcode/Build/Intermediates/gtest.build/Debug/gtest-static.build/gtest-all-target-headers.hmap -iquote /Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/xcode/Build/Intermediates/gtest.build/Debug/gtest-static.build/gtest-project-headers.hmap -I/Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/xcode/Build/Debug/include -I.. -I../include -I/Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/xcode/Build/Intermediates/gtest.build/Debug/gtest-static.build/DerivedSources/i386 -I/Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/xcode/Build/Intermediates/gtest.build/Debug/gtest-static.build/DerivedSources -Wall -Werror -Wendif-labels -Wnewline-eof -Wno-sign-compare -Wshadow -F/Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/xcode/Build/Debug -DDEBUG=1 -MMD -MT dependencies -MF /Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/xcode/Build/Intermediates/gtest.build/Debug/gtest-static.build/Objects-normal/i386/gtest-all.d --serialize-diagnostics /Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/xcode/Build/Intermediates/gtest.build/Debug/gtest-static.build/Objects-normal/i386/gtest-all.dia -c /Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/src/gtest-all.cc -o /Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/xcode/Build/Intermediates/gtest.build/Debug/gtest-static.build/Objects-normal/i386/gtest-all.o36"9E219819-D973-4F90-96DF-9C4CABCFB508-
+bF902D655-AE05-482C-8184-5EAE466E85B1
+
+CCompileC Build/Intermediates/gtest.build/Debug/gtest-static.build/Objects-normal/x86_64/gtest-all.o /Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/src/gtest-all.cc normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
+s415589284.145453
+e415589286.308071
+r1
+xCompileC
+xBuild/Intermediates/gtest.build/Debug/gtest-static.build/Objects-normal/x86_64/gtest-all.o
+x/Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/src/gtest-all.cc
+xnormal
+xx86_64
+xc++
+xcom.apple.compilers.llvm.clang.1_0.compiler
+d/Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/src/gtest-all.cc
+d/Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/include/gtest/gtest.h
+d/Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/include/gtest/internal/gtest-internal.h
+d/Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/include/gtest/internal/gtest-port.h
+d/Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/include/gtest/gtest-message.h
+d/Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/include/gtest/internal/gtest-string.h
+d/Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/include/gtest/internal/gtest-filepath.h
+d/Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/include/gtest/internal/gtest-type-util.h
+d/Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/include/gtest/gtest-death-test.h
+d/Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/include/gtest/internal/gtest-death-test-internal.h
+d/Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/include/gtest/gtest-param-test.h
+d/Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/include/gtest/internal/gtest-param-util.h
+d/Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/include/gtest/internal/gtest-linked_ptr.h
+d/Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/include/gtest/gtest-printers.h
+d/Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/include/gtest/internal/gtest-param-util-generated.h
+d/Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/include/gtest/gtest_prod.h
+d/Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/include/gtest/gtest-test-part.h
+d/Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/include/gtest/gtest-typed-test.h
+d/Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/include/gtest/gtest_pred_impl.h
+d/Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/src/gtest.cc
+d/Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/include/gtest/gtest-spi.h
+d/Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/src/gtest-internal-inl.h
+d/Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/src/gtest-death-test.cc
+d/Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/src/gtest-filepath.cc
+d/Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/src/gtest-port.cc
+d/Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/src/gtest-printers.cc
+d/Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/src/gtest-test-part.cc
+d/Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/src/gtest-typed-test.cc
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection99"Compile /Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/src/gtest-all.cc253"CompileC Build/Intermediates/gtest.build/Debug/gtest-static.build/Objects-normal/x86_64/gtest-all.o /Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/src/gtest-all.cc normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler666725a463c5b841^65de4ea663c5b841^---0#0#1#-19%DVTDocumentLocation2@98"file:///Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/src/gtest-all.cc0000000000000000^3400"CompileC Build/Intermediates/gtest.build/Debug/gtest-static.build/Objects-normal/x86_64/gtest-all.o /Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/src/gtest-all.cc normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler    cd /Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/xcode    setenv LANG en_US.US-ASCII    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x c++ -arch x86_64 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-return-type -Wno-non-virtual-dtor -Wno-overloaded-virtual -Wno-exit-time-destructors -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wno-unused-variable -Wunused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-constant-conversion -Wno-int-conversion -Wno-bool-conversion -Wno-enum-conversion -Wno-shorten-64-to-32 -Wno-newline-eof -Wno-c++11-extensions -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk -fasm-blocks -fstrict-aliasing -Wdeprecated-declarations -Winvalid-offsetof -mmacosx-version-min=10.4 -g -fvisibility=hidden -fvisibility-inlines-hidden -Wno-sign-conversion -iquote /Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/xcode/Build/Intermediates/gtest.build/Debug/gtest-static.build/gtest-generated-files.hmap -I/Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/xcode/Build/Intermediates/gtest.build/Debug/gtest-static.build/gtest-own-target-headers.hmap -I/Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/xcode/Build/Intermediates/gtest.build/Debug/gtest-static.build/gtest-all-target-headers.hmap -iquote /Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/xcode/Build/Intermediates/gtest.build/Debug/gtest-static.build/gtest-project-headers.hmap -I/Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/xcode/Build/Debug/include -I.. -I../include -I/Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/xcode/Build/Intermediates/gtest.build/Debug/gtest-static.build/DerivedSources/x86_64 -I/Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/xcode/Build/Intermediates/gtest.build/Debug/gtest-static.build/DerivedSources -Wall -Werror -Wendif-labels -Wnewline-eof -Wno-sign-compare -Wshadow -F/Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/xcode/Build/Debug -DDEBUG=1 -MMD -MT dependencies -MF /Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/xcode/Build/Intermediates/gtest.build/Debug/gtest-static.build/Objects-normal/x86_64/gtest-all.d --serialize-diagnostics /Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/xcode/Build/Intermediates/gtest.build/Debug/gtest-static.build/Objects-normal/x86_64/gtest-all.dia -c /Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/src/gtest-all.cc -o /Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/xcode/Build/Intermediates/gtest.build/Debug/gtest-static.build/Objects-normal/x86_64/gtest-all.o36"F85D14D7-AC60-4E50-BE3C-E6AAECABFAE3-
+bF902D655-AE05-482C-8184-5EAE466E85B1
+
+CCreateUniversalBinary /Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/xcode/Build/Debug/libgtest.a normal i386\ x86_64
+s415589286.462038
+e415589286.511729
+r1
+xCreateUniversalBinary
+x/Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/xcode/Build/Debug/libgtest.a
+xnormal
+xi386 x86_64
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection127"Create universal binary /Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/xcode/Build/Debug/libgtest.a64"CreateUniversalBinary Build/Debug/libgtest.a normal i386\ x86_64225376a663c5b841^0c0283a663c5b841^---0#0#1#-19%DVTDocumentLocation2@110"file:///Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/xcode/Build/Debug/libgtest.a0034f4c7ddffdf42^620"CreateUniversalBinary Build/Debug/libgtest.a normal i386\ x86_64    cd /Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/xcode    libtool -static /Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/xcode/Build/Intermediates/gtest.build/Debug/gtest-static.build/Objects-normal/i386/libgtest.a /Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/xcode/Build/Intermediates/gtest.build/Debug/gtest-static.build/Objects-normal/x86_64/libgtest.a -o /Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/xcode/Build/Debug/libgtest.a36"3020100B-6418-4121-B3C4-DCB202D5E403-
+bF902D655-AE05-482C-8184-5EAE466E85B1
+
+CLibtool /Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/xcode/Build/Intermediates/gtest.build/Debug/gtest-static.build/Objects-normal/i386/libgtest.a normal i386
+s415589286.447248
+e415589286.461633
+r1
+xLibtool
+x/Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/xcode/Build/Intermediates/gtest.build/Debug/gtest-static.build/Objects-normal/i386/libgtest.a
+xnormal
+xi386
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection107"Libtool Build/Intermediates/gtest.build/Debug/gtest-static.build/Objects-normal/i386/libgtest.a normal i386107"Libtool Build/Intermediates/gtest.build/Debug/gtest-static.build/Objects-normal/i386/libgtest.a normal i386938a72a663c5b841^0a2e76a663c5b841^---0#0#1#--925"Libtool Build/Intermediates/gtest.build/Debug/gtest-static.build/Objects-normal/i386/libgtest.a normal i386    cd /Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/xcode    setenv MACOSX_DEPLOYMENT_TARGET 10.4    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool -static -arch_only i386 -syslibroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk -L/Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/xcode/Build/Debug -filelist /Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/xcode/Build/Intermediates/gtest.build/Debug/gtest-static.build/Objects-normal/i386/gtest.LinkFileList -o /Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/xcode/Build/Intermediates/gtest.build/Debug/gtest-static.build/Objects-normal/i386/libgtest.a36"BCCB87F8-FCB4-42E5-8B0C-6F7A647C8B22-
+bF902D655-AE05-482C-8184-5EAE466E85B1
+
+CLibtool /Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/xcode/Build/Intermediates/gtest.build/Debug/gtest-static.build/Objects-normal/x86_64/libgtest.a normal x86_64
+s415589286.447377
+e415589286.461373
+r1
+xLibtool
+x/Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/xcode/Build/Intermediates/gtest.build/Debug/gtest-static.build/Objects-normal/x86_64/libgtest.a
+xnormal
+xx86_64
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection111"Libtool Build/Intermediates/gtest.build/Debug/gtest-static.build/Objects-normal/x86_64/libgtest.a normal x86_64111"Libtool Build/Intermediates/gtest.build/Debug/gtest-static.build/Objects-normal/x86_64/libgtest.a normal x86_64369072a663c5b841^eb1d76a663c5b841^---0#0#1#--935"Libtool Build/Intermediates/gtest.build/Debug/gtest-static.build/Objects-normal/x86_64/libgtest.a normal x86_64    cd /Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/xcode    setenv MACOSX_DEPLOYMENT_TARGET 10.4    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool -static -arch_only x86_64 -syslibroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk -L/Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/xcode/Build/Debug -filelist /Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/xcode/Build/Intermediates/gtest.build/Debug/gtest-static.build/Objects-normal/x86_64/gtest.LinkFileList -o /Volumes/User/philippe_groarke/Documents/XCode/Words/unit_test/gtest-1.7.0/xcode/Build/Intermediates/gtest.build/Debug/gtest-static.build/Objects-normal/x86_64/libgtest.a36"E598CAAB-38C4-48B5-ADB6-AD346B290CDB-
+bF902D655-AE05-482C-8184-5EAE466E85B1
+

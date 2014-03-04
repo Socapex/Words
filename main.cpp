@@ -1,76 +1,42 @@
 #include <iostream>
+#include <iomanip>
 #include <string>
 #include <fstream>
 #include <vector>
 #include <algorithm>
 #include <map>
 #include <time.h>
+#include <getopt.h>
+#include <stdlib.h>
+
 #include "CMap.h"
 #include "CDataBase.h"
+#include "CInputEnglish.h"
 
 using namespace std;
 
-void addWord( CMap* map, string* words, string& word, unsigned int& count )
+
+void printHelp()
 {
-    words[2] = words[1];
-    words[1] = words[0];
-    words[0] = word;
-    if( count > 2 )
-    {
-        map->insert( words[2] ).insert( words[1] ).insert( words[0] );
-    }
-    else
-    {
-        count++;
-    }
-    word.clear();
+    cout << "########################" << endl
+    << "Word Engine" << endl << "v0.01" << endl
+    << "########################" << endl << endl;
+
+    cout << "Usage: words [options]" << endl << endl;
+
+    cout << "========" << endl
+    << "Options" << endl
+    << "========" << endl << endl;
+
+    cout << "* Input:" << endl << endl;
+    cout << setw(20) << left << "--stdin" << "Read from input pipe." << endl;
+    cout << setw(20) << left << "-i [filename]" << "Read from text file." << endl;
+    cout << setw(20) << left << "-m [number]" << "Markov length (default 3)." << endl;
+
+    cout << endl << endl;
 }
 
-void readfile( const string& path, CMap& map )
-{
-    ifstream file;
-    file.open( path.c_str(), ifstream::in );
-    string word;
-    //char x ;
-    word.clear();
 
-    string words[3];
-    unsigned int count = 0;
-
-    //int c;
-
-    while( file.good() )
-    {
-        char c = file.get();   // get character from file
-
-        if( file.good() )
-        {
-            switch( c )
-            {
-                case ' ':
-                    addWord( &map, words, word, count );
-                    break;
-
-            case '\n':
-                if( word.empty() )
-                {
-                    addWord( &map, words, word, count );
-                }
-                break;
-
-                default:
-                    word = word + c;
-            }
-        }
-        else if( word.empty() )
-        {
-            addWord( &map, words, word, count );
-        }
-    }
-
-	map.GetMap().erase("");
-    file.close();
-}
 
 bool myFunction(pair<CTYPE> first, pair<CTYPE> second)
 {
@@ -134,12 +100,74 @@ CMap& GetFirstWord( CMap& m )
 
 }
 
-int main()
+int main(int argc, char* argv[])
 {
+    // Initialise stuff
+    CMap mymap;
+    CInputEnglish inputEnglish(mymap);
+
+
+    //MENU
+    if (argc == 1)
+    {
+        printHelp();
+        return 0;
+    }
+
+    //http://www.gnu.org/software/libc/manual/html_node/Getopt-Long-Option-Example.html
+    static struct option long_options[] =
+    {
+        {"help",    no_argument,        0, 'h'},
+        {"stdin",   no_argument,        0, 's'},
+        {"i",       required_argument,  0, 'b'},
+        {"m",       required_argument,  0, 'm'},
+        {0, 0, 0, 0}
+    };
+    int option_index = 0;
+
+    int opt = 0;
+    while ((opt = getopt_long(argc, argv, "i:shm:", long_options, &option_index))
+           != -1)
+    {
+        switch (opt) {
+            case 'i':
+                cout << " got i" << endl;
+                inputEnglish.ReadFile((string)optarg);
+                break;
+
+            case 'm':
+                inputEnglish.setMarkovLength(atoi(optarg));
+                break;
+
+            case 's':
+                cout << "got stdin" << endl;
+                break;
+
+            case 'h':
+                printHelp();
+                break;
+
+            case '?':
+                cout << "dfgdfgdf" << endl;
+                return 0;
+                break;
+                
+            default:
+                printHelp();
+                return 0;
+                break;
+        }
+    }
+
+
+
+
+
+
+
     srand( (unsigned int)time( NULL ) );
 
-    CMap mymap;
-	readfile("test.txt", mymap);
+	//readfile("test.txt", mymap);
 
 	//CDataBase data_base(mymap);
 	//data_base.SaveData("cdb");
@@ -186,12 +214,14 @@ int main()
 	cout << e.GetWord().GetString() << " " << endl;
 
 
-    //print_by_weight( map.GetWordMap("system") );
+//    print_by_weight( map );
 
     //cout << "------------------------------------" << endl;
     //cout << "THE STUDY" << endl;
     //cout << "------------------------------------" << endl;
     //print_by_weight( map.GetWordMap("study").GetWordMap("of") );
+#ifdef _MSC_VER
 	system("pause");
+#endif
     return 0;
 }

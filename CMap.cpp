@@ -8,13 +8,16 @@ CMap& CMap::insert(  const string& str  )
 {
 
     pair<CIterator,bool> ret = _map.insert( CPair(str, CMap()) );
-    if( !ret.second )
+
+    // The pair::second element in the pair is set to true if a new element
+    // was inserted or false if an equivalent key already existed.
+    if( ret.second == false) //EXIST
     {
         ret.first->second.GetWord().increment();
         //cout << "Element already exist --- ";
         //cout << str << " :          " << ret.first->second.GetWord().GetCount() << endl;
     }
-    else
+    else //EXIST PAS
     {
         ret.first->second.SetWord( str );
     }
