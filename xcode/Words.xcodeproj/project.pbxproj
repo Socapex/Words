@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2B400BC118C5713F004EA4FC /* getopt_long.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B400BBE18C5713F004EA4FC /* getopt_long.c */; };
+		2B400BC218C5713F004EA4FC /* getopt.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B400BC018C5713F004EA4FC /* getopt.c */; };
 		2B97301618B7EBF300F486AF /* Words.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2B97301518B7EBF300F486AF /* Words.1 */; };
 		2B97302418B7EC3600F486AF /* CAttribute.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B97301C18B7EC3600F486AF /* CAttribute.cpp */; };
 		2B97302518B7EC3600F486AF /* CMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B97301E18B7EC3600F486AF /* CMap.cpp */; };
@@ -30,7 +32,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		2B97301018B7EBF300F486AF /* Words */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Words; sourceTree = BUILT_PRODUCTS_DIR; };
+		2B400BBE18C5713F004EA4FC /* getopt_long.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = getopt_long.c; path = ../../getopt_long.c; sourceTree = "<group>"; };
+		2B400BBF18C5713F004EA4FC /* getopt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = getopt.h; path = ../../getopt.h; sourceTree = "<group>"; };
+		2B400BC018C5713F004EA4FC /* getopt.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = getopt.c; path = ../../getopt.c; sourceTree = "<group>"; };
+		2B97301018B7EBF300F486AF /* Words */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; name = Words; path = words; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B97301518B7EBF300F486AF /* Words.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = Words.1; sourceTree = "<group>"; };
 		2B97301C18B7EC3600F486AF /* CAttribute.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CAttribute.cpp; path = ../../CAttribute.cpp; sourceTree = "<group>"; };
 		2B97301D18B7EC3600F486AF /* CAttribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CAttribute.h; path = ../../CAttribute.h; sourceTree = "<group>"; };
@@ -87,6 +92,9 @@
 				2B97301518B7EBF300F486AF /* Words.1 */,
 				2BC059DA18C53F840035FB08 /* CInputEnglish.cpp */,
 				2BC059DB18C53F840035FB08 /* CInputEnglish.h */,
+				2B400BBE18C5713F004EA4FC /* getopt_long.c */,
+				2B400BBF18C5713F004EA4FC /* getopt.h */,
+				2B400BC018C5713F004EA4FC /* getopt.c */,
 			);
 			path = Words;
 			sourceTree = "<group>";
@@ -146,7 +154,9 @@
 				2B97302418B7EC3600F486AF /* CAttribute.cpp in Sources */,
 				2BC059D618C53EC00035FB08 /* CDataBase.cpp in Sources */,
 				2B97302718B7EC3600F486AF /* main.cpp in Sources */,
+				2B400BC218C5713F004EA4FC /* getopt.c in Sources */,
 				2B97302618B7EC3600F486AF /* CWord.cpp in Sources */,
+				2B400BC118C5713F004EA4FC /* getopt_long.c in Sources */,
 				2BC059DC18C53F840035FB08 /* CInputEnglish.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

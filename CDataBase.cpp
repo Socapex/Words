@@ -86,17 +86,49 @@ bool CDataBase::ReadData(const string& path)
 	uint8_t str_size = 0;
 	uint32_t nWord = 0;
 
+	CMap m;
+
 	infile.read((char*)&str_size, 1);
 	if (str_size != 0)
 	{
 		char* c = new char[str_size];
-		infile.read((char*)&c, str_size);
+		infile.read(c, str_size);
+		m.SetWord(c);
+		delete c; c = nullptr;
 	}
 	
 	infile.read((char*)&nWord, 4);
 
 	cout << (unsigned int)str_size << endl;
 	cout << (unsigned int)nWord << endl;
+	//-------------------------------------------
+	// First layer.
+	//for (int i = 0; i < nWord; ++i)
+	//{
+		CMap m1;
+		str_size = 0;
+		infile.read((char*)&str_size, 1);
+
+		cout << (unsigned int)str_size << endl;
+
+		if (str_size > 0)
+		{
+			char* c = new char[str_size+1];
+			infile.read(c, str_size);
+			c[str_size] = '\0';
+			m1.SetWord(c);
+			cout << m1.GetWord().GetString() << endl;
+			delete c; c = nullptr;
+		}
+
+		uint32_t nWord_1 = 0;
+		infile.read((char*)&nWord_1, 4);
+
+		cout << (unsigned int)nWord_1 << endl;
+	//}
+
+
+
 
 	infile.close();
 

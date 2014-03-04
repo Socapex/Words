@@ -42,6 +42,7 @@ void CInputEnglish::ReadFile(string filename)
             {
                 case ' ':
                     addWord(words, word, count );
+                    //cout << word << endl;
                     break;
 
                 case '\n':

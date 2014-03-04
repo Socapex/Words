@@ -55,6 +55,15 @@ unsigned long CMap::GetSize()
     return _map.size();
 }
 
+void CMap::SetMap(map<CTYPE>& m)
+{
+	if (_map.size() != 0)
+	{
+		cout << "Map wasn't empty." << endl;
+	}
+	_map = m;
+}
+
 //bool CMap::Save( const string& path )
 //{
 //	return 0;
