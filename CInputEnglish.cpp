@@ -25,13 +25,7 @@ void CInputEnglish::ReadFile(string filename)
     ifstream file;
     file.open( filename.c_str(), ifstream::in );
     string word;
-    //char x ;
     word.clear();
-
-    string words[3];
-    unsigned int count = 0;
-
-    //int c;
 
     while( file.good() )
     {
@@ -45,7 +39,7 @@ void CInputEnglish::ReadFile(string filename)
 //                    cout << word << endl;
                     addWord(word);
                     break;
-                    
+
                 case ',':
                     addWord(word);
                     word = ",";
@@ -110,8 +104,7 @@ void CInputEnglish::ReadFile(string filename)
 //            addWord(word);
 //        }
     }
-    
-    //_map->GetMap().erase("");
+
     file.close();
 
 }
