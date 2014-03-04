@@ -15,6 +15,9 @@
 
 using namespace std;
 
+void generateSentence(CMap& mymap,
+					  const unsigned int& length,
+					  const unsigned int& nb_sentense);
 
 void printHelp()
 {
@@ -35,7 +38,6 @@ void printHelp()
 
     cout << endl << endl;
 }
-
 
 
 bool myFunction(pair<CTYPE> first, pair<CTYPE> second)
@@ -159,59 +161,21 @@ int main(int argc, char* argv[])
         }
     }
 
-
-
-
-
-
-
     srand( (unsigned int)time( NULL ) );
 
 	//readfile("test.txt", mymap);
+
+	//for (int i = 0; i < 5000; i++)
+	//	cout << "Process--------------" << i << '\xd';
 
 	CDataBase data_base(mymap);
 	data_base.SaveData("cdb");
 	data_base.ReadData("cdb");
 
 	//data_base.PrintMap();
+	generateSentence(mymap, 5, 8);
+
 	
-
-	CMap k = GetOneOfTopThree(mymap);
-    cout << k.GetWord().GetString() << " ";
-    CMap l = GetOneOfTopThree( k );
-    cout << l.GetWord().GetString() << " ";
-    CMap m = GetOneOfTopThree( l );
-    cout << m.GetWord().GetString() << " ";
-
-	CMap n = mymap.GetWordMap(l.GetWord().GetString());
-    CMap o = n.GetWordMap( m.GetWord().GetString() );
-    CMap p = GetOneOfTopThree( o );
-    cout << p.GetWord().GetString() << " ";
-
-	CMap q = mymap.GetWordMap(o.GetWord().GetString());
-    CMap r = q.GetWordMap( p.GetWord().GetString() );
-    CMap s = GetOneOfTopThree( r );
-    cout << s.GetWord().GetString() << " ";
-
-	CMap t = mymap.GetWordMap(r.GetWord().GetString());
-    CMap u = t.GetWordMap( s.GetWord().GetString() );
-    CMap v = GetOneOfTopThree( u );
-    cout << v.GetWord().GetString() << " ";
-
-	CMap w = mymap.GetWordMap(u.GetWord().GetString());
-    CMap x = w.GetWordMap( v.GetWord().GetString() );
-    CMap y = GetOneOfTopThree( x );
-    cout << y.GetWord().GetString() << " ";
-
-	CMap z = mymap.GetWordMap(x.GetWord().GetString());
-    CMap a = z.GetWordMap( y.GetWord().GetString() );
-    CMap b = GetOneOfTopThree( a );
-    cout << b.GetWord().GetString() << " ";
-
-	CMap c = mymap.GetWordMap(a.GetWord().GetString());
-    CMap d = c.GetWordMap( b.GetWord().GetString() );
-    CMap e = GetOneOfTopThree( d );
-	cout << e.GetWord().GetString() << " " << endl;
 
 
 //    print_by_weight( map );
@@ -220,8 +184,41 @@ int main(int argc, char* argv[])
     //cout << "THE STUDY" << endl;
     //cout << "------------------------------------" << endl;
     //print_by_weight( map.GetWordMap("study").GetWordMap("of") );
-#ifdef _MSC_VER
-	system("pause");
-#endif
+
+//#ifdef _MSC_VER >= 1600
+	//system("pause");
+	//cout << "Test" << endl;
+//#endif
     return 0;
+}
+
+void generateSentence(CMap& mymap, 
+					  const unsigned int& nb_sentense, 
+					  const unsigned int& length)
+{	
+	for (unsigned int n = 0; n < nb_sentense; ++n)
+	{
+		vector<string> sentence;
+		CMap* m1 = &GetOneOfTopThree(mymap);
+		CMap* m2 = &GetOneOfTopThree(*m1);
+		CMap* m3 = &GetOneOfTopThree(*m2);
+
+		sentence.push_back(m1->GetWord().GetString());
+		sentence.push_back(m2->GetWord().GetString());
+		sentence.push_back(m3->GetWord().GetString());
+
+		for (unsigned int i = 3; i < length; ++i)
+		{
+			m1 = &mymap.GetWordMap(m2->GetWord().GetString());
+			m2 = &m1->GetWordMap(m3->GetWord().GetString());
+			m3 = &GetOneOfTopThree(*m2);
+			sentence.push_back(m3->GetWord().GetString());
+		}
+
+		for (string s : sentence)
+		{
+			cout << s << " ";
+		}
+		cout << endl;
+	}
 }

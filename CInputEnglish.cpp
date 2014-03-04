@@ -14,10 +14,12 @@ CInputEnglish::CInputEnglish(CMap &map)
     _markovLength = 3;
 }
 
+
 void CInputEnglish::ReadStdin()
 {
 
 }
+
 
 void CInputEnglish::ReadFile(string filename)
 {
@@ -110,16 +112,13 @@ void CInputEnglish::ReadFile(string filename)
 }
 
 
-
-
-
 void CInputEnglish::addWord(string& word)
 {
     if (word.empty()) {
         return;
     }
 
-    cout << word << endl;
+    //cout << word << endl;
 
     // Check beginning of text
     if (_markovChain.size() < _markovLength)

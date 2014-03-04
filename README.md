@@ -2,6 +2,7 @@ Words
 =====
 ###Todo (Coding)
 
+
 - [ ] First simple reading automate. 
 
 - [x] Saving file to binary file. 
@@ -11,7 +12,8 @@ Words
 
 
 
-###Todo (Testing)- [x] Find a easy to use unit test library.
+###Todo (Testing)
+- [x] Find a easy to use unit test library.
 
 - [ ] Unit test for reading automate.
 
