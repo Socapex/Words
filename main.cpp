@@ -186,7 +186,7 @@ int main(int argc, char* argv[])
 	data_base.SaveData("cdb");
 	data_base.ReadData("cdb");
 
-	generateSentence(mymap, 20, 12);
+	generateSentence(mymap, 1, 5);
 
 	return 0;
 }
