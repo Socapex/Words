@@ -141,13 +141,13 @@ int main()
     CMap mymap;
 	readfile("test.txt", mymap);
 
-	//CDataBase data_base(mymap);
-	//data_base.SaveData("cdb");
-	//data_base.ReadData("cdb");
+	CDataBase data_base(mymap);
+	data_base.SaveData("cdb");
+	data_base.ReadData("cdb");
 
 	//data_base.PrintMap();
 	
-
+/*
 	CMap k = GetOneOfTopThree(mymap);
     cout << k.GetWord().GetString() << " ";
     CMap l = GetOneOfTopThree( k );
@@ -183,7 +183,7 @@ int main()
 	CMap c = mymap.GetWordMap(a.GetWord().GetString());
     CMap d = c.GetWordMap( b.GetWord().GetString() );
     CMap e = GetOneOfTopThree( d );
-	cout << e.GetWord().GetString() << " " << endl;
+	cout << e.GetWord().GetString() << " " << endl;*/
 
 
     //print_by_weight( map.GetWordMap("system") );

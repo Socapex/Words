@@ -8,7 +8,8 @@ CMap& CMap::insert(  const string& str  )
 {
 
     pair<CIterator,bool> ret = _map.insert( CPair(str, CMap()) );
-    if( !ret.second )
+    
+	if( !ret.second )
     {
         ret.first->second.GetWord().increment();
         //cout << "Element already exist --- ";
@@ -50,6 +51,15 @@ void CMap::Print()
 unsigned long CMap::GetSize()
 {
     return _map.size();
+}
+
+void CMap::SetMap(map<CTYPE>& m)
+{
+	if (_map.size() != 0)
+	{
+		cout << "Map wasn't empty." << endl;
+	}
+	_map = m;
 }
 
 //bool CMap::Save( const string& path )

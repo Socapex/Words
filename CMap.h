@@ -39,6 +39,8 @@ public:
 
     unsigned long GetSize();
 
+	void SetMap(map<CTYPE>& m);
+
     map<CTYPE>& GetMap()
     {
         return _map;
