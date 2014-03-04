@@ -12,20 +12,29 @@ CInputEnglish::CInputEnglish(CMap &map)
 {
     _map = &map;
     _markovLength = 3;
+    _currentWord.clear();
 }
 
 void CInputEnglish::ReadStdin()
 {
-
+    char c;
+    while (cin.get(c))
+    {
+        parseText(c);
+    }
 }
 
-void CInputEnglish::ReadFile(string filename)
+int CInputEnglish::ReadFile(string filename)
 {
 
     ifstream file;
     file.open( filename.c_str(), ifstream::in );
-    string word;
-    word.clear();
+
+    if (file.fail())
+    {
+        cout << "Couldn't open " << filename << endl;
+        return -1;
+    }
 
     while( file.good() )
     {
@@ -33,98 +42,105 @@ void CInputEnglish::ReadFile(string filename)
 
         if( file.good() )
         {
-            switch( c )
-            {
-                case ' ':
-//                    cout << word << endl;
-                    addWord(word);
-                    break;
-
-                case ',':
-                    addWord(word);
-                    word = ",";
-                    addWord(word);
-                    break;
-
-                case ';':
-                    addWord(word);
-                    word = ";";
-                    addWord(word);
-                    break;
-
-                case '-':
-                    addWord(word);
-                    word = "-";
-                    addWord(word);
-                    break;
-
-                // Terminating strings
-                case '.':
-                    //Get the first word.
-                    addWord(word);
-                    //Now process .
-                    word = ".";
-                    addWord(word);
-                    break;
-
-                case '?':
-                    addWord(word);
-                    word = ".";
-                    addWord(word);
-                    break;
-
-                case '!':
-                    addWord(word);
-                    word = ".";
-                    addWord(word);
-                    break;
-
-                // Custom stuff
-                case '\n':
-                    addWord(word);
-                    break;
-
-                case '\'':
-                    //Do nothing for now
-                    break;
-                case '"':
-                    break;
-                case '(':
-                    break;
-                case ')':
-                    break;
-
-                default:
-//                    cout << c << endl;
-                    word = word + c;
-            }
+            parseText(c);
         }
-//        else if( word.empty() )
+
+//        else if( _currentWord.empty() )
 //        {
-//            addWord(word);
+//            addWord(_currentWord);
 //        }
     }
 
     file.close();
+    return 0;
+}
+
+
+
+void CInputEnglish::parseText(char &c)
+{
+    switch( c )
+    {
+        case ' ':
+            //                    cout << _currentWord << endl;
+            addWord();
+            break;
+
+        case ',':
+            addWord();
+            _currentWord = ",";
+            addWord();
+            break;
+
+        case ';':
+            addWord();
+            _currentWord = ";";
+            addWord();
+            break;
+
+        case '-':
+            addWord();
+            _currentWord = "-";
+            addWord();
+            break;
+
+            // Terminating strings
+        case '.':
+            //Get the first .
+            addWord();
+            //Now process .
+            _currentWord = ".";
+            addWord();
+            break;
+
+        case '?':
+            addWord();
+            _currentWord = ".";
+            addWord();
+            break;
+
+        case '!':
+            addWord();
+            _currentWord = ".";
+            addWord();
+            break;
+
+            // Custom stuff
+        case '\n':
+            addWord();
+            break;
+
+        case '\'':
+            //Do nothing for now
+            break;
+        case '"':
+            break;
+        case '(':
+            break;
+        case ')':
+            break;
+
+        default:
+            //                    cout << c << endl;
+            _currentWord += c;
+    }
 
 }
 
 
 
-
-
-void CInputEnglish::addWord(string& word)
+void CInputEnglish::addWord()
 {
-    if (word.empty()) {
+    if (_currentWord.empty()) {
         return;
     }
 
-    cout << word << endl;
+    cout << _currentWord << endl;
 
     // Check beginning of text
     if (_markovChain.size() < _markovLength)
     {
-        _markovChain.push_back(word);
+        _markovChain.push_back(_currentWord);
 
         // Reached the correct size?
         if (_markovChain.size() == _markovLength)
@@ -134,12 +150,12 @@ void CInputEnglish::addWord(string& word)
     {
         // Make the new chain
         _markovChain.pop_front();
-        _markovChain.push_back(word);
+        _markovChain.push_back(_currentWord);
 
         insertChain();
     }
 
-    word.clear();
+    _currentWord.clear();
 }
 
 

@@ -24,16 +24,18 @@ public:
 //    ~CInputEnglish();
 
     void ReadStdin();
-    void ReadFile(string filename);
+    int ReadFile(string filename);
     void setMarkovLength(const int& length);
 
 private:
-    void addWord(string &word);
+    void parseText(char &c);
+    void addWord();
     void insertChain();
 
     CMap* _map;
     list<string> _markovChain;
     int _markovLength;
+    string _currentWord;
 };
 
 #endif /* defined(__Words__CInputEnglish__) */
