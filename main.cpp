@@ -141,7 +141,8 @@ int main(int argc, char* argv[])
                 break;
 
             case 'm':
-                inputEnglish.setMarkovLength(atoi(optarg));
+                mymap.setMarkovLength(atoi(optarg));
+                //inputEnglish.setMarkovLength(atoi(optarg));
                 break;
 
             case 's':

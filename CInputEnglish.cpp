@@ -146,12 +146,12 @@ void CInputEnglish::addWord()
     //cout << _currentWord << endl;
 
     // Check beginning of text
-    if (_markovChain.size() < _markovLength)
+    if (_markovChain.size() < _map->getMarkovLength())
     {
         _markovChain.push_back(_currentWord);
 
         // Reached the correct size?
-        if (_markovChain.size() == _markovLength)
+        if (_markovChain.size() == _map->getMarkovLength())
             insertChain();
     }
     else

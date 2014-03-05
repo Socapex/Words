@@ -25,20 +25,31 @@ void CGenerateSentence::generate(const int &num)
     // Generate num sentences
     for (int i = 0; i < num; ++i)
     {
-        string sentence = getFirstSentenceWord();
-        CMap lastWordMap = _map->GetWordMap(sentence);
-        string newWord = "";
+        // Initialise the beginning of sentence. We need the correct markov
+        // number of words!
+        list<CMap> sentence = {_map->GetWordMap(getFirstSentenceWord())}; //Add first word
+
+        while (sentence.size() < _map->getMarkovLength())
+        {
+            // Get last word
+            CMap newWord = sentence.back();
+            // Find a commonly used word inside the tree of the first word
+            newWord = newWord.GetWordMap(getRandomTopString(sortChildren(newWord)));
+            sentence.push_back(newWord);
+        }
 
         // While last character isn't terminator (. ! ?)
         while (find(_sentenceTerminators.begin(), _sentenceTerminators.end(),
-                    newWord) == _sentenceTerminators.end())
+                    sentence.back().GetWord().GetString()) == _sentenceTerminators.end())
         {
-            newWord = getRandomTopString(sortChildren(lastWordMap));
-            sentence += " " + newWord;
-            lastWordMap = _map->GetWordMap(newWord);
+            sentence.push_back(getNextMarkovWord(sentence));
         }
 
-        cout << sentence << endl;
+        for (auto x : sentence)
+        {
+            cout << x.GetWord().GetString() << " ";
+        }
+        cout << endl;
     }
 }
 
@@ -82,7 +93,37 @@ void CGenerateSentence::setMaxChars(const int &max)
 
 // PRIVATE
 
-vector<pair<CTYPE> > CGenerateSentence::sortChildren(CMap &map)
+
+CMap CGenerateSentence::getNextMarkovWord(list<CMap> maps) const
+{
+    list<CMap> temp = maps;
+    // Remove the unused first words
+    while (temp.size() >= _map->getMarkovLength())
+    {
+        temp.pop_front();
+    }
+
+    // Find the second word in original map, loosing the chain and starting anew.
+    CMap newWord = _map->GetWordMap(temp.front().GetWord().GetString());
+    temp.pop_front();
+
+    // Get the last inner map
+    for (const auto x : temp)
+    {
+        if (newWord.GetWordMap(x.GetWord().GetString()) == notFound)
+            newWord = newWord.GetWordMap(getRandomTopString(sortChildren(newWord)));
+        else
+            newWord = newWord.GetWordMap(x.GetWord().GetString());
+    }
+
+    // We have one more level to go. So go and find the next random word.
+    newWord = newWord.GetWordMap(getRandomTopString(sortChildren(newWord)));
+
+    // OUCH... Bobo a la tete
+    return newWord;
+}
+
+vector<pair<CTYPE> > CGenerateSentence::sortChildren(CMap map) const
 {
     vector<pair<CTYPE> > temp(map.GetMap().begin(), map.GetMap().end());
     sort(temp.begin(), temp.end(), &orderCMapByCount);
@@ -90,7 +131,7 @@ vector<pair<CTYPE> > CGenerateSentence::sortChildren(CMap &map)
 }
 
 
-string CGenerateSentence::getRandomTopString(vector<pair<CTYPE> > sortedVector)
+string CGenerateSentence::getRandomTopString(vector<pair<CTYPE> > sortedVector) const
 {
     // Bug si le vector est plus petit que le randomness
     int tempRand = sortedVector.size();
@@ -99,13 +140,13 @@ string CGenerateSentence::getRandomTopString(vector<pair<CTYPE> > sortedVector)
     return sortedVector[rand() % tempRand].first;
 }
 
-CMap& CGenerateSentence::getRandomSentenceTerminator()
+CMap CGenerateSentence::getRandomSentenceTerminator() const
 {
     string terminator = _sentenceTerminators[rand() % _sentenceTerminators.size()];
     return _map->GetWordMap(terminator);
 }
 
-string CGenerateSentence::getFirstSentenceWord()
+string CGenerateSentence::getFirstSentenceWord() const
 {
     // Get a random sentence terminator (. ! ?)
     // Then sort his children by most used word after it
@@ -114,75 +155,78 @@ string CGenerateSentence::getFirstSentenceWord()
 
     // Because of ! and ? often used in "" or (), we make sure the first
     // letter is capital.
-    string firstWord = getRandomTopString(sortChildren(getRandomSentenceTerminator()));
+    string firstWord = getRandomTopString(sortChildren(
+                                          getRandomSentenceTerminator()));
 
     while (!isupper(firstWord[0])) {
-        firstWord = getRandomTopString(sortChildren(getRandomSentenceTerminator()));
+        firstWord = getRandomTopString(sortChildren(
+                                       getRandomSentenceTerminator()));
     }
 
     return firstWord;
 
 }
 
-CMap& GetOneOfTopThree( CMap& m )
-{
-    map<CTYPE> myMap = m.GetMap();
-    vector< pair<CTYPE> > myVec( myMap.begin(), myMap.end() );
-    sort( myVec.begin(),myVec.end(),&orderCMapByCount );
-    //cout << (rand() % 3) << endl;
 
-    if( myVec.size() > 3 )
-    {
-        //rand() % 3
-		return m.GetWordMap(myVec[rand() % 3].first);
-    }
-    else if( myVec.size() > 2)
-    {
-        //rand() % 2
-		return m.GetWordMap(myVec[rand() % 2].first);
-    }
-    else
-    {
-        return m.GetWordMap( myVec[0].first );
-    }
-}
+//CMap& GetOneOfTopThree( CMap& m )
+//{
+//    map<CTYPE> myMap = m.GetMap();
+//    vector< pair<CTYPE> > myVec( myMap.begin(), myMap.end() );
+//    sort( myVec.begin(),myVec.end(),&orderCMapByCount );
+//    //cout << (rand() % 3) << endl;
+//
+//    if( myVec.size() > 3 )
+//    {
+//        //rand() % 3
+//		return m.GetWordMap(myVec[rand() % 3].first);
+//    }
+//    else if( myVec.size() > 2)
+//    {
+//        //rand() % 2
+//		return m.GetWordMap(myVec[rand() % 2].first);
+//    }
+//    else
+//    {
+//        return m.GetWordMap( myVec[0].first );
+//    }
+//}
 
 
 // Sentenses must contain at least three words.
-void generateSentence(CMap& mymap,
-					  const unsigned int& nb_sentense,
-					  const unsigned int& length)
-{
-    // Generate "nb_sentense" number of sentenses.
-	for (unsigned int n = 0; n < nb_sentense; ++n)
-	{
-        // Vector of size "length" words contaning the sentense.
-		vector<string> sentense(length);
-
-		// Get three first words.
-		CMap* m1 = &GetOneOfTopThree(mymap);
-		CMap* m2 = &GetOneOfTopThree(*m1);
-		CMap* m3 = &GetOneOfTopThree(*m2);
-
-		// Fill the vector with the first three words in the sentense.
-		sentense[0] = m1->GetWord().GetString();
-		sentense[1] = m2->GetWord().GetString();
-		sentense[2] = m3->GetWord().GetString();
-
-		// Add the rest of the words to the sentense.
-		for (unsigned int i = 3; i < length; ++i)
-		{
-			m1 = &mymap.GetWordMap(m2->GetWord().GetString());
-			m2 = &m1->GetWordMap(m3->GetWord().GetString());
-			m3 = &GetOneOfTopThree(*m2);
-			sentense[i] = m3->GetWord().GetString();
-		}
-
-		// Show sentense.
-		for (string s : sentense)
-		{
-			cout << s << " ";
-		}
-		cout << endl;
-	}
-}
+//void generateSentence(CMap& mymap,
+//					  const unsigned int& nb_sentense,
+//					  const unsigned int& length)
+//{
+//    // Generate "nb_sentense" number of sentenses.
+//	for (unsigned int n = 0; n < nb_sentense; ++n)
+//	{
+//        // Vector of size "length" words contaning the sentense.
+//		vector<string> sentense(length);
+//
+//		// Get three first words.
+//		CMap* m1 = &GetOneOfTopThree(mymap);
+//		CMap* m2 = &GetOneOfTopThree(*m1);
+//		CMap* m3 = &GetOneOfTopThree(*m2);
+//
+//		// Fill the vector with the first three words in the sentense.
+//		sentense[0] = m1->GetWord().GetString();
+//		sentense[1] = m2->GetWord().GetString();
+//		sentense[2] = m3->GetWord().GetString();
+//
+//		// Add the rest of the words to the sentense.
+//		for (unsigned int i = 3; i < length; ++i)
+//		{
+//			m1 = &mymap.GetWordMap(m2->GetWord().GetString());
+//			m2 = &m1->GetWordMap(m3->GetWord().GetString());
+//			m3 = &GetOneOfTopThree(*m2);
+//			sentense[i] = m3->GetWord().GetString();
+//		}
+//
+//		// Show sentense.
+//		for (string s : sentense)
+//		{
+//			cout << s << " ";
+//		}
+//		cout << endl;
+//	}
+//}

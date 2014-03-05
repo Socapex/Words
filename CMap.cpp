@@ -1,5 +1,7 @@
 #include "CMap.h"
 
+CMap notFound;
+
 bool orderCMapByCount(pair<CTYPE> first, pair<CTYPE> second)
 {
     return first.second.GetWord().GetCount() > second.second.GetWord().GetCount();
@@ -7,6 +9,7 @@ bool orderCMapByCount(pair<CTYPE> first, pair<CTYPE> second)
 
 CMap::CMap()
 {
+    _markovLength = 3;
 }
 
 CMap& CMap::insert(  const string& str  )
@@ -18,7 +21,7 @@ CMap& CMap::insert(  const string& str  )
     // was inserted or false if an equivalent key already existed.
     if( ret.second == false) //EXIST
     {
-        ret.first->second.GetWord().increment();
+        ret.first->second.incrementWordCount();
         //cout << "Element already exist --- ";
         //cout << str << " :          " << ret.first->second.GetWord().GetCount() << endl;
     }
@@ -30,12 +33,18 @@ CMap& CMap::insert(  const string& str  )
     return ret.first->second;
 }
 
-CMap& CMap::GetWordMap( const string& str )
+CMap CMap::GetWordMap( const string& str ) const
 {
-    return ( _map.find( str )->second );
+    if (_map.find(str) != _map.end())
+        return _map.find( str )->second;
+
+//    CMap criss;
+
+    return notFound;
+//    return criss;
 }
 
-CWord& CMap::GetWord()
+CWord CMap::GetWord() const
 {
     return _word;
 }
@@ -43,6 +52,16 @@ CWord& CMap::GetWord()
 void CMap::SetWord( const string& word )
 {
     _word.SetWord( word );
+}
+
+void CMap::SetWordCount(const int &count)
+{
+    _word.SetCount(count);
+}
+
+void CMap::incrementWordCount()
+{
+    _word.increment();
 }
 
 void CMap::Print()
@@ -55,7 +74,7 @@ void CMap::Print()
     }
 }
 
-unsigned long CMap::GetSize()
+unsigned long CMap::GetSize() const
 {
     return _map.size();
 }
@@ -68,6 +87,32 @@ void CMap::SetMap(map<CTYPE>& m)
 	}
 	_map = m;
 }
+
+
+void CMap::setMarkovLength(const int &len)
+{
+    _markovLength = len;
+}
+
+int CMap::getMarkovLength() const
+{
+    return _markovLength;
+}
+
+
+
+
+// Operators
+bool operator== (const CMap &map1, const CMap &map2)
+{
+    return (map1._map == map2._map) && (map1._word == map2._word);
+}
+
+
+
+
+
+
 
 //bool CMap::Save( const string& path )
 //{

@@ -21,7 +21,7 @@ public:
     CAnalysis(CMap& map);
 
     void PrintMostUsed(const int &num);
-    CMap& GetMostUsed();
+    CMap GetMostUsed() const;
 
 
 private:

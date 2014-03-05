@@ -32,7 +32,7 @@ void CAnalysis::PrintMostUsed(const int &num)
 }
 
 // TODO: Make efficient in some sort of cool way!
-CMap& CAnalysis::GetMostUsed()
+CMap CAnalysis::GetMostUsed() const
 {
     //    map<CTYPE> myMap = m.GetMap();
     vector< pair<CTYPE> > myVec(_map->GetMap().begin(), _map->GetMap().end());

@@ -31,15 +31,17 @@ public:
     // (if the function returns a value).
     CMap &insert(  const string& str  );
 
-    CMap& GetWordMap(const string& str );
+    CMap GetWordMap(const string& str ) const;
 
-    CWord& GetWord();
+    CWord GetWord() const;
 
     void SetWord( const string& word );
+    void SetWordCount (const int &count);
+    void incrementWordCount();
 
     void Print();
 
-    unsigned long GetSize();
+    unsigned long GetSize() const;
 
 	void SetMap(map<CTYPE>& m);
 
@@ -48,17 +50,24 @@ public:
         return _map;
     }
 
+    void setMarkovLength(const int &len);
+    int getMarkovLength() const;
+
 	//bool Save( const string& path );
 
     //CWord& operator[] ( const string& str );
+    friend bool operator== (const CMap &map1, const CMap &map2);
 
 private:
     map<CTYPE> _map;
     CWord _word;
+    int _markovLength;
 };
 
 
 // Function pointer
 extern bool orderCMapByCount(pair<CTYPE> first, pair<CTYPE> second);
+
+extern CMap notFound; // Une map retourner quand ca trouve rien... P-e pas tres nice
 
 #endif

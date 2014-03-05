@@ -11,6 +11,7 @@
 
 #include <iostream>
 #include <vector>
+#include <list>
 #include <locale>
 #include <algorithm>
 
@@ -34,11 +35,12 @@ public:
     void setMaxChars(const int &max);
 
 private:
-    vector<pair<CTYPE> > sortChildren(CMap &map);
-    string getRandomTopString(vector<pair<CTYPE> > sortedVector);
-    CMap& getRandomSentenceTerminator();
+    CMap getNextMarkovWord(list<CMap> maps) const;
+    vector<pair<CTYPE> > sortChildren(CMap map) const;
+    string getRandomTopString(vector<pair<CTYPE> > sortedVector) const;
+    CMap getRandomSentenceTerminator() const;
 
-    string getFirstSentenceWord();
+    string getFirstSentenceWord() const;
 
     CMap* _map;
     vector<pair<CTYPE> > _sortedWordsByCount;

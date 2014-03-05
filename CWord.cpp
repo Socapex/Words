@@ -1,6 +1,6 @@
 #include "CWord.h"
 
-CLong CWord::GetCount()
+CLong CWord::GetCount() const
 {
     return _count;
 }
@@ -16,7 +16,21 @@ void CWord::SetWord( const string& word )
     _count++;
 }
 
-string CWord::GetString()
+void CWord::SetCount(const int &count)
+{
+    _count = count;
+}
+
+string CWord::GetString() const
 {
     return _word;
+}
+
+
+
+// Operators
+
+bool operator== (const CWord &word1, const CWord &word2)
+{
+    return word1._word == word2._word;
 }

@@ -35,13 +35,16 @@ public:
         return (CAttribute*)(_attributes[index]);//->GetAttribute());
     }
 
-    CLong GetCount();
+    CLong GetCount() const;
 
     void increment();
 
     void SetWord( const string& word );
+    void SetCount(const int &count);
 
-    string GetString();
+    string GetString() const;
+
+    friend bool operator== (const CWord &word1, const CWord &word2);
 
 private:
     string _word;
@@ -49,5 +52,6 @@ private:
 
     vector< CAttribute* > _attributes;
 };
+
 
 #endif
