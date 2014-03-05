@@ -31,14 +31,3 @@ void CAnalysis::PrintMostUsed(const int &num)
     cout << endl;
 }
 
-// TODO: Make efficient in some sort of cool way!
-CMap CAnalysis::GetMostUsed() const
-{
-    //    map<CTYPE> myMap = m.GetMap();
-    vector< pair<CTYPE> > myVec(_map->GetMap().begin(), _map->GetMap().end());
-
-    sort( myVec.begin(), myVec.end(), &orderCMapByCount );
-
-	return _map->GetWordMap(myVec[0].first);
-}
-

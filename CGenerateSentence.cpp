@@ -20,10 +20,10 @@ CGenerateSentence::CGenerateSentence(CMap &map)
     _sentenceTerminators.push_back("?");
 }
 
-void CGenerateSentence::generate(const int &num)
+void CGenerateSentence::generate()
 {
     // Generate num sentences
-    for (int i = 0; i < num; ++i)
+    for (int i = 0; i < _numSentence; ++i)
     {
         // Initialise the beginning of sentence. We need the correct markov
         // number of words!
@@ -64,6 +64,12 @@ void CGenerateSentence::GenerateFile()
 }
 
 // SETTERS/GETTERS
+
+void CGenerateSentence::setNumSentence(const int &num)
+{
+    _numSentence = num;
+}
+
 void CGenerateSentence::setRandomness(const int &rand)
 {
     _randomness = rand;
@@ -166,67 +172,3 @@ string CGenerateSentence::getFirstSentenceWord() const
     return firstWord;
 
 }
-
-
-//CMap& GetOneOfTopThree( CMap& m )
-//{
-//    map<CTYPE> myMap = m.GetMap();
-//    vector< pair<CTYPE> > myVec( myMap.begin(), myMap.end() );
-//    sort( myVec.begin(),myVec.end(),&orderCMapByCount );
-//    //cout << (rand() % 3) << endl;
-//
-//    if( myVec.size() > 3 )
-//    {
-//        //rand() % 3
-//		return m.GetWordMap(myVec[rand() % 3].first);
-//    }
-//    else if( myVec.size() > 2)
-//    {
-//        //rand() % 2
-//		return m.GetWordMap(myVec[rand() % 2].first);
-//    }
-//    else
-//    {
-//        return m.GetWordMap( myVec[0].first );
-//    }
-//}
-
-
-// Sentenses must contain at least three words.
-//void generateSentence(CMap& mymap,
-//					  const unsigned int& nb_sentense,
-//					  const unsigned int& length)
-//{
-//    // Generate "nb_sentense" number of sentenses.
-//	for (unsigned int n = 0; n < nb_sentense; ++n)
-//	{
-//        // Vector of size "length" words contaning the sentense.
-//		vector<string> sentense(length);
-//
-//		// Get three first words.
-//		CMap* m1 = &GetOneOfTopThree(mymap);
-//		CMap* m2 = &GetOneOfTopThree(*m1);
-//		CMap* m3 = &GetOneOfTopThree(*m2);
-//
-//		// Fill the vector with the first three words in the sentense.
-//		sentense[0] = m1->GetWord().GetString();
-//		sentense[1] = m2->GetWord().GetString();
-//		sentense[2] = m3->GetWord().GetString();
-//
-//		// Add the rest of the words to the sentense.
-//		for (unsigned int i = 3; i < length; ++i)
-//		{
-//			m1 = &mymap.GetWordMap(m2->GetWord().GetString());
-//			m2 = &m1->GetWordMap(m3->GetWord().GetString());
-//			m3 = &GetOneOfTopThree(*m2);
-//			sentense[i] = m3->GetWord().GetString();
-//		}
-//
-//		// Show sentense.
-//		for (string s : sentense)
-//		{
-//			cout << s << " ";
-//		}
-//		cout << endl;
-//	}
-//}

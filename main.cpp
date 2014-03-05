@@ -40,30 +40,30 @@ void printHelp()
 
     //Input
     cout << "* Input:" << endl << endl;
+    cout << setw(25) << left << "-m [number]" << "Markov length (default 3)." << endl;
     cout << setw(25) << left << "--stdin" << "Read from input pipe." << endl;
     cout << setw(25) << left << "-i [filename]" << "Read from text file." << endl;
-    cout << setw(25) << left << "-m [number]" << "Markov length (default 3)." << endl;
 
     //Output
     cout << endl << "* Output:" << endl << endl;
-    cout << setw(25) << left << "-g [number]" << "Generate x number of sentences." << endl;
+    cout << setw(25) << left << "-n [number]" << "Generate n number of sentences." << endl;
     cout << setw(25) << left << "-r [number]" << "Randomness value (higher means "
         "more words included with lower count)." << endl;
-    cout << "ATTENTION, mettre -r AVANT -g pour l'instant!" << endl;
+    cout << setw(25) << left << "--min-words [number]" << "Minimum sentence words"
+    " (default 3)." << endl;
+    cout << setw(25) << left << "--max-words [number]" << "Maximum sentence words"
+    " (default none)." << endl;
+    cout << setw(25) << left << "--min-chars [number]" << "Minimum sentence characters,"
+    "including spaces (default none)." << endl;
+    cout << setw(25) << left << "--max-chars [number]" << "Maximum sentence characters,"
+    "including spaces (default none)." << endl;
     cout << setw(25) << left << "--bruteforce" << "Generate all sentences." << endl;
     cout << setw(25) << left << "--stdout" << "Write to general output." << endl;
     cout << setw(25) << left << "-o [filename]" << "Write to text file." << endl;
-    cout << setw(25) << left << "--min-words [number]" << "Minimum sentence words"
-        " (default 3)." << endl;
-    cout << setw(25) << left << "--max-words [number]" << "Maximum sentence words"
-        " (default none)." << endl;
-    cout << setw(25) << left << "--min-chars [number]" << "Minimum sentence characters,"
-        "including spaces (default none)." << endl;
-    cout << setw(25) << left << "--max-chars [number]" << "Maximum sentence characters,"
-        "including spaces (default none)." << endl;
+
 
     //Analysis
-    cout << endl << "* Analysis:" << endl;
+    cout << endl << "* Analysis:" << endl <<endl;
     cout << setw(25) << left << "--top-words [number]" << "Print most used words." << endl;
 
     cout << endl << endl;
@@ -108,15 +108,15 @@ int main(int argc, char* argv[])
         {"m",           required_argument,  0, 'm'},
 
         //Output
-        {"g",           required_argument,  0, 'g'},
+        {"n",           required_argument,  0, 'n'},
         {"r",           required_argument,  0, 'r'},
-        {"bruteforce",  no_argument,        0, 'B'},
-        {"stdout",      no_argument,        0, 'S'},
-        {"o",           required_argument,  0, 'o'},
         {"min-words",   required_argument,  0, 'w'},
         {"max-words",   required_argument,  0, 'W'},
         {"min-chars",   required_argument,  0, 'c'},
         {"max-chars",   required_argument,  0, 'C'},
+        {"stdout",      no_argument,        0, 'S'},
+        {"bruteforce",  no_argument,        0, 'B'},
+        {"o",           required_argument,  0, 'o'},
 
         //Analysis & Debug
         {"top-words",   required_argument,  0, 't'},
@@ -125,7 +125,7 @@ int main(int argc, char* argv[])
     int option_index = 0;
 
     int opt = 0;
-    while ((opt = getopt_long(argc, argv, "hsi:m:g:r:BSo:w:W:c:C:", long_options, &option_index))
+    while ((opt = getopt_long(argc, argv, "hsm:i:sn:r:w:W:c:C:SBo:", long_options, &option_index))
            != -1)
     {
         switch (opt) {
@@ -150,8 +150,8 @@ int main(int argc, char* argv[])
                 break;
 
             //Output
-            case 'g':
-                generator.generate(atoi(optarg));
+            case 'n':
+                generator.setNumSentence(atoi(optarg));
                 break;
             case 'r':
                 generator.setRandomness(atoi(optarg));
@@ -167,7 +167,10 @@ int main(int argc, char* argv[])
                 break;
             case 'C':
                 generator.setMaxChars(atoi(optarg));
-                break;            
+                break;
+            case 'S':
+                generator.generate();
+                break;
 
             //Analysis
             case 't':

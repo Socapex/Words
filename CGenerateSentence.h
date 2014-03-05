@@ -24,10 +24,11 @@ public:
     CGenerateSentence(CMap &map);
     //~CGenerateSentence();
 
-    void generate(const int &num);
+    void generate();
     void Bruteforce();
     void GenerateFile();
 
+    void setNumSentence(const int &num);
     void setRandomness(const int &rand);
     void setMinWords(const int &min);
     void setMaxWords(const int &max);
@@ -45,7 +46,7 @@ private:
     CMap* _map;
     vector<pair<CTYPE> > _sortedWordsByCount;
     vector<string> _sentenceTerminators;
-    int _randomness, _minWords, _maxWords, _minChars, _maxChars;
+    int _numSentence, _randomness, _minWords, _maxWords, _minChars, _maxChars;
 };
 
 #endif /* defined(__Words__CGenerateSentence__) */
