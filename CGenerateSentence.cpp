@@ -16,8 +16,8 @@ CGenerateSentence::CGenerateSentence(CMap &map)
     _sortedWordsByCount = sortChildren(map);
 
     _sentenceTerminators.push_back(".");
-    //_sentenceTerminators.push_back("!");
-    //_sentenceTerminators.push_back("?");
+    _sentenceTerminators.push_back("!");
+    _sentenceTerminators.push_back("?");
 }
 
 void CGenerateSentence::generate(const int &num)
@@ -25,7 +25,20 @@ void CGenerateSentence::generate(const int &num)
     // Generate num sentences
     for (int i = 0; i < num; ++i)
     {
-        cout << getFirstSentenceWord() << endl;
+        string sentence = getFirstSentenceWord();
+        CMap lastWordMap = _map->GetWordMap(sentence);
+        string newWord = "";
+
+        // While last character isn't terminator (. ! ?)
+        while (find(_sentenceTerminators.begin(), _sentenceTerminators.end(),
+                    newWord) == _sentenceTerminators.end())
+        {
+            newWord = getRandomTopString(sortChildren(lastWordMap));
+            sentence += " " + newWord;
+            lastWordMap = _map->GetWordMap(newWord);
+        }
+
+        cout << sentence << endl;
     }
 }
 
@@ -79,7 +92,11 @@ vector<pair<CTYPE> > CGenerateSentence::sortChildren(CMap &map)
 
 string CGenerateSentence::getRandomTopString(vector<pair<CTYPE> > sortedVector)
 {
-    return sortedVector[rand() % _randomness].first;
+    // Bug si le vector est plus petit que le randomness
+    int tempRand = sortedVector.size();
+    if (tempRand > _randomness)
+        tempRand = _randomness;
+    return sortedVector[rand() % tempRand].first;
 }
 
 CMap& CGenerateSentence::getRandomSentenceTerminator()
@@ -95,7 +112,15 @@ string CGenerateSentence::getFirstSentenceWord()
     // Then grab a random word in the top (ex: top 10)
     // We get an often used word at the beginning of a sentence! yay
 
-    return getRandomTopString(sortChildren(getRandomSentenceTerminator()));
+    // Because of ! and ? often used in "" or (), we make sure the first
+    // letter is capital.
+    string firstWord = getRandomTopString(sortChildren(getRandomSentenceTerminator()));
+
+    while (!isupper(firstWord[0])) {
+        firstWord = getRandomTopString(sortChildren(getRandomSentenceTerminator()));
+    }
+
+    return firstWord;
 
 }
 

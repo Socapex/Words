@@ -11,7 +11,8 @@
 
 #include <iostream>
 #include <vector>
-#include <time.h>
+#include <locale>
+#include <algorithm>
 
 #include "CMap.h"
 
