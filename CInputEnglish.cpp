@@ -99,6 +99,9 @@ void CInputEnglish::parseText(char &c)
         case '\n':
             addWord();
             break;
+        case '\t':
+            addWord();
+            break;
 
             //Do nothing for now
         case '\'':
@@ -120,6 +123,9 @@ void CInputEnglish::parseText(char &c)
         case '_':
             break;
         case '*':
+            break;
+        case '\r':
+            // \n case takes care of this since on windows its \r\n
             break;
 
         default:

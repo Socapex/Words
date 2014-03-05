@@ -10,6 +10,8 @@
 #define __Words__CGenerateSentence__
 
 #include <iostream>
+#include <vector>
+#include <time.h>
 
 #include "CMap.h"
 
@@ -24,14 +26,23 @@ public:
     void Bruteforce();
     void GenerateFile();
 
+    void setRandomness(const int &rand);
     void setMinWords(const int &min);
     void setMaxWords(const int &max);
     void setMinChars(const int &min);
     void setMaxChars(const int &max);
 
 private:
+    vector<pair<CTYPE> > sortChildren(CMap &map);
+    string getRandomTopString(vector<pair<CTYPE> > sortedVector);
+    CMap& getRandomSentenceTerminator();
+
+    string getFirstSentenceWord();
+
     CMap* _map;
-    int _minWords, _maxWords, _minChars, _maxChars;
+    vector<pair<CTYPE> > _sortedWordsByCount;
+    vector<string> _sentenceTerminators;
+    int _randomness, _minWords, _maxWords, _minChars, _maxChars;
 };
 
 #endif /* defined(__Words__CGenerateSentence__) */

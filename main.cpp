@@ -26,10 +26,6 @@
 
 using namespace std;
 
-void generateSentence(CMap& mymap,
-					  const unsigned int& length,
-					  const unsigned int& nb_sentense);
-
 void printHelp()
 {
     cout << "########################" << endl
@@ -51,6 +47,9 @@ void printHelp()
     //Output
     cout << endl << "* Output:" << endl << endl;
     cout << setw(25) << left << "-g [number]" << "Generate x number of sentences." << endl;
+    cout << setw(25) << left << "-r [number]" << "Randomness value (higher means "
+        "more words included with lower count)." << endl;
+    cout << "ATTENTION, mettre -r AVANT -g pour l'instant!" << endl;
     cout << setw(25) << left << "--bruteforce" << "Generate all sentences." << endl;
     cout << setw(25) << left << "--stdout" << "Write to general output." << endl;
     cout << setw(25) << left << "-o [filename]" << "Write to text file." << endl;
@@ -71,39 +70,6 @@ void printHelp()
 }
 
 
-CMap& GetOneOfTopThree( CMap& m )
-{
-    map<CTYPE> myMap = m.GetMap();
-    vector< pair<CTYPE> > myVec( myMap.begin(), myMap.end() );
-    sort( myVec.begin(),myVec.end(),&orderCMapByCount );
-    //cout << (rand() % 3) << endl;
-
-    if( myVec.size() > 3 )
-    {
-        //rand() % 3
-		return m.GetWordMap(myVec[rand() % 3].first);
-    }
-    else if( myVec.size() > 2)
-    {
-        //rand() % 2
-		return m.GetWordMap(myVec[rand() % 2].first);
-    }
-    else
-    {
-        return m.GetWordMap( myVec[0].first );
-    }
-}
-
-CMap& GetFirstWord( CMap& m )
-{
-    map<CTYPE> myMap = m.GetMap();
-    vector< pair<CTYPE> > myVec( myMap.begin(), myMap.end() );
-    sort( myVec.begin(),myVec.end(),&orderCMapByCount );
-
-    //rand() % 10
-    return m.GetWordMap( myVec[rand() % 8].first );
-
-}
 
 
 
@@ -120,6 +86,8 @@ int main(int argc, char* argv[])
     CGenerateSentence generator(mymap);
     CAnalysis analyser(mymap);
 
+    //Get better randomness...
+    srand( (unsigned int)time( NULL ) );
 
 
     //MENU
@@ -136,11 +104,12 @@ int main(int argc, char* argv[])
 
         //Input
         {"stdin",       no_argument,        0, 's'},
-        {"i",           required_argument,  0, 'b'},
+        {"i",           required_argument,  0, 'i'},
         {"m",           required_argument,  0, 'm'},
 
         //Output
         {"g",           required_argument,  0, 'g'},
+        {"r",           required_argument,  0, 'r'},
         {"bruteforce",  no_argument,        0, 'B'},
         {"stdout",      no_argument,        0, 'S'},
         {"o",           required_argument,  0, 'o'},
@@ -156,7 +125,7 @@ int main(int argc, char* argv[])
     int option_index = 0;
 
     int opt = 0;
-    while ((opt = getopt_long(argc, argv, "i:shm:", long_options, &option_index))
+    while ((opt = getopt_long(argc, argv, "hsi:m:g:r:BSo:w:W:c:C:", long_options, &option_index))
            != -1)
     {
         switch (opt) {
@@ -183,7 +152,9 @@ int main(int argc, char* argv[])
             case 'g':
                 generator.generate(atoi(optarg));
                 break;
-
+            case 'r':
+                generator.setRandomness(atoi(optarg));
+                break;
             case 'w':
                 generator.setMinWords(atoi(optarg));
                 break;
@@ -217,7 +188,6 @@ int main(int argc, char* argv[])
         }
     }
 
-    srand( (unsigned int)time( NULL ) );
 
 	//readfile("test.txt", mymap);
 
@@ -225,47 +195,10 @@ int main(int argc, char* argv[])
 	data_base.SaveData("cdb");
 	data_base.ReadData("cdb");
 
-	generateSentence(mymap, 1, 5);
+	//generateSentence(mymap, 1, 5);
 
 	return 0;
 }
 
 
-// Sentenses must contain at least three words.
-void generateSentence(CMap& mymap, 
-					  const unsigned int& nb_sentense, 
-					  const unsigned int& length)
-{	
-    // Generate "nb_sentense" number of sentenses.
-	for (unsigned int n = 0; n < nb_sentense; ++n)
-	{
-        // Vector of size "length" words contaning the sentense.
-		vector<string> sentense(length);
 
-		// Get three first words.
-		CMap* m1 = &GetOneOfTopThree(mymap);
-		CMap* m2 = &GetOneOfTopThree(*m1);
-		CMap* m3 = &GetOneOfTopThree(*m2);
-
-		// Fill the vector with the first three words in the sentense.
-		sentense[0] = m1->GetWord().GetString();
-		sentense[1] = m2->GetWord().GetString();
-		sentense[2] = m3->GetWord().GetString();
-	
-		// Add the rest of the words to the sentense.
-		for (unsigned int i = 3; i < length; ++i)
-		{
-			m1 = &mymap.GetWordMap(m2->GetWord().GetString());
-			m2 = &m1->GetWordMap(m3->GetWord().GetString());
-			m3 = &GetOneOfTopThree(*m2);
-			sentense[i] = m3->GetWord().GetString();
-		}
-
-		// Show sentense.
-		for (string s : sentense)
-		{
-			cout << s << " ";
-		}
-		cout << endl;
-	}
-}
