@@ -17,17 +17,18 @@
 #include "getopt.h"
 //#endif
 
-
 #include "CMap.h"
 #include "CDataBase.h"
 #include "CInputEnglish.h"
 #include "CGenerateSentence.h"
 #include "CAnalysis.h"
+#include "CDebug.h"
 
 using namespace std;
 
 void printHelp()
 {
+
     cout << "########################" << endl
     << "Word Engine" << endl << "v0.01" << endl
     << "########################" << endl << endl;
@@ -75,6 +76,9 @@ void printHelp()
 
 int main(int argc, char* argv[])
 {
+    //Marche pas, cest quoi ste marde la?
+	//DEBUG[D_FLOW] << "PROGRAM START_________________________________" << endl;
+
     //Wait for debugger to attach
     //Mac only je pense...
     //kill(getpid(), SIGSTOP);
@@ -89,6 +93,8 @@ int main(int argc, char* argv[])
     //Get better randomness...
     srand( (unsigned int)time( NULL ) );
 
+	//DEBUG.OUTPUT1() << "TEST1" << endl;
+	//DEBUG.OUTPUT2() << "TEST2" << endl;
 
     //MENU
     if (argc == 1)
@@ -205,6 +211,8 @@ int main(int argc, char* argv[])
 	data_base.ReadData("cdb");
 
 	//generateSentence(mymap, 1, 5);
+
+	//DEBUG[D_FLOW] << "PROGRAM END___________________________________" << endl;
 
 	return 0;
 }

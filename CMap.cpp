@@ -1,11 +1,14 @@
 #include "CMap.h"
 
+//CDebug DEBUG;
+
 CMap notFound;
 
 bool orderCMapByCount(pair<CTYPE> first, pair<CTYPE> second)
 {
     return first.second.GetWord().GetCount() > second.second.GetWord().GetCount();
 }
+
 
 CMap::CMap()
 {
@@ -34,6 +37,7 @@ CMap& CMap::insert(  const string& str  )
 }
 
 CMap CMap::GetWordMap( const string& str ) const
+/// @todo What happen when the word "str" is not in the map.
 {
     if (_map.find(str) != _map.end())
         return _map.find( str )->second;

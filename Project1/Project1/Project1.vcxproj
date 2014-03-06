@@ -66,6 +66,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\CAttribute.cpp" />
+    <ClCompile Include="..\..\CDebug.cpp" />
     <ClCompile Include="..\..\CInputEnglish.cpp" />
     <ClCompile Include="..\..\CMap.cpp" />
     <ClCompile Include="..\..\CDataBase.cpp" />
@@ -76,6 +77,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\CAttribute.h" />
+    <ClInclude Include="..\..\CDebug.h" />
     <ClInclude Include="..\..\CInputEnglish.h" />
     <ClInclude Include="..\..\CMap.h" />
     <ClInclude Include="..\..\CDataBase.h" />
