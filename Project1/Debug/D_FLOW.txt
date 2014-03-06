@@ -6,11 +6,8 @@ CGenerateSentence::CGenerateSentence
 CAnalysis::CAnalysis
 CMain::CMain
 COption::init
-Words.exe -D -i ../../text3.txt -m 2 
-CMain::OnDebug
+Words.exe -i ../../text.txt 
 CMain::OnReadFile
 CInputEnglish::ReadFile
-CMain::OnSetMarkovChain
-CAnalysis::PrintSorted
 PROGRAM END
 CDebug::~CDebug

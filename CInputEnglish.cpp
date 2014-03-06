@@ -36,25 +36,40 @@ int CInputEnglish::ReadFile(string filename)
     file.open( filename.c_str(), ifstream::in );
 
     if (file.fail())
-    {
-        cout << "Couldn't open " << filename << endl;
+	{
+		cerr << "Couldn't open " << filename << endl;
         return -1;
     }
 
+	unsigned long nChar = 0;
+	
+	streampos begin_pos = file.tellg();
+	file.seekg(0, ios::end);
+	streampos end_pos = file.tellg();
+	unsigned long nTotal = (unsigned long)(end_pos-begin_pos);
+	file.seekg(0, ios::beg);
+	
     while( file.good() )
     {
         char c = (char)file.get();   // get character from file
+		nChar++;
 
         if( file.good() )
         {
             parseText(c);
         }
 
+		if (nChar % 5000 == 0)
+		{
+			CProgressBar((double)nChar / (double)nTotal, "Reading file");
+		}
+		
 //        else if( _currentWord.empty() )
 //        {
 //            addWord(_currentWord);
 //        }
     }
+	CProgressBar(1.0, "Reading file");
 
     file.close();
     return 0;

@@ -11,6 +11,8 @@
 #include <iostream>
 #include <fstream>
 #include <assert.h>
+#include <iomanip>
+#include <string>
 
 using namespace std;
 
@@ -21,17 +23,21 @@ using namespace std;
 #define FCT_NAME __FUNCTION__ 
 #endif
 
+// Output exit message in program flow output.
 #define DEBUG_EXIT(value, text) DEBUG[D_FLOW] << \
 								"EXIT : " << text << endl; exit(value)
 
+// Output function name in program flow output.
 #define DEBUG_FCT DEBUG[D_FLOW] << FCT_NAME << endl;
-
 
 // Assert function with assert line and messsage.
 #define ASSERT(condition, message) \
 	if (!(condition)) {cerr << "Assert `" #condition "` failed in " \
 		<< __FILE__ << " line " << __LINE__ << ": " << message << endl; \
 		assert((condition)); }
+
+// Output a progress bar on stdout.
+void CProgressBar(const double& value0_1, const string& msg);
 
 enum CDebugOutputList
 {
