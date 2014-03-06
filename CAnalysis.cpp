@@ -10,11 +10,15 @@
 
 CAnalysis::CAnalysis(CMap& map)
 {
+	DEBUG_FCT
+
     _map = &map;
 }
 
 void CAnalysis::PrintMostUsed(const int &num)
 {
+	DEBUG_FCT
+
     vector< pair<CTYPE> > myVec(_map->GetMap().begin(), _map->GetMap().end());
 
     sort( myVec.begin(), myVec.end(), &orderCMapByCount );

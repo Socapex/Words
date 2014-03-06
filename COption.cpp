@@ -2,12 +2,12 @@
 
 COption::COption()
 {
-	DEBUG[D_FLOW] << "COption Constructor" << endl;
+	DEBUG_FCT
 }
 
 void COption::init(int argc, char* argv[])
 {
-	DEBUG[D_FLOW] << "COption init" << endl;
+	DEBUG_FCT
 
 	//MENU
 	if (argc == 1)

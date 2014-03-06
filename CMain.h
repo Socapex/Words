@@ -18,7 +18,7 @@
 class CMain : public COption
 {
 public:
-	CMain(int argc, char* argv[]);
+	CMain();
 
 	CMap* GetMap();
 

@@ -9,7 +9,8 @@ int main(int argc, char* argv[])
 {
 	DEBUG[D_FLOW] << "PROGRAM START" << endl;
 
-	CMain cmain(argc, argv);
+	CMain cmain;
+	cmain.init(argc, argv);
 	CMap* m = cmain.GetMap();
 	m->Print(DEBUG[D_OUT1]);
 

@@ -14,6 +14,16 @@
 
 using namespace std;
 
+#if __APPLE__
+/// @todo Find macro for demangled function name. 
+#define __func__
+#else
+#define FCT_NAME __FUNCTION__ 
+#endif
+
+#define DEBUG_FCT DEBUG[D_FLOW] << FCT_NAME << endl;
+
+
 // Assert function with assert line and messsage.
 #define ASSERT(condition, message) \
 	if (!(condition)) {cerr << "Assert `" #condition "` failed in " \

@@ -26,10 +26,14 @@ CDebug::CDebug()
 	{
 		cout << "Couldn't open " << "OUTPUT2.txt" << endl;
 	}
+
+	DEBUG_FCT
 }
 
 CDebug::~CDebug()
 {
+	DEBUG_FCT
+
 	_outs[D_FLOW].close();
 	_outs[D_OUT1].close();
 	_outs[D_OUT2].close();

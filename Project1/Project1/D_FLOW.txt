@@ -6,7 +6,6 @@ CGenerateSentence::CGenerateSentence
 CAnalysis::CAnalysis
 CMain::CMain
 COption::init
-CMain::OnSetMarkovChain
 CMain::OnReadFile
 CInputEnglish::ReadFile
 PROGRAM END

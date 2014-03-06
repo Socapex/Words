@@ -9,7 +9,7 @@
 
 CGenerateSentence::CGenerateSentence(CMap &map)
 {
-	DEBUG[D_FLOW] << "CGenerateSentence constructor" << endl;
+	DEBUG_FCT
 	//Get better randomness...
 	srand((unsigned int)time(NULL));
 
@@ -26,7 +26,7 @@ CGenerateSentence::CGenerateSentence(CMap &map)
 
 void CGenerateSentence::generate()
 {
-	DEBUG[D_FLOW] << "CGenerateSentence generate" << endl;
+	DEBUG_FCT
     // Generate num sentences
     for (int i = 0; i < _numSentence; ++i)
     {
@@ -72,43 +72,49 @@ void CGenerateSentence::generate()
 
 void CGenerateSentence::Bruteforce()
 {
-	DEBUG[D_FLOW] << "CGenerateSentence Bruteforce" << endl;
+	DEBUG_FCT
 }
 
 void CGenerateSentence::GenerateFile()
 {
-	DEBUG[D_FLOW] << "CGenerateSentence GenerateFile" << endl;
+	DEBUG_FCT
 }
 
 // SETTERS/GETTERS
 
 void CGenerateSentence::setNumSentence(const int &num)
 {
+	DEBUG_FCT
     _numSentence = num;
 }
 
 void CGenerateSentence::setRandomness(const int &rand)
 {
+	DEBUG_FCT
     _randomness = rand;
 }
 
 void CGenerateSentence::setMinWords(const int &min)
 {
+	DEBUG_FCT
     _minWords = min;
 }
 
 void CGenerateSentence::setMaxWords(const int &max)
 {
+	DEBUG_FCT
     _maxWords = max;
 }
 
 void CGenerateSentence::setMinChars(const int &min)
 {
+	DEBUG_FCT
     _minChars = min;
 }
 
 void CGenerateSentence::setMaxChars(const int &max)
 {
+	DEBUG_FCT
     _maxChars = max;
 }
 

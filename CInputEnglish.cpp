@@ -10,7 +10,7 @@
 
 CInputEnglish::CInputEnglish(CMap &map)
 {
-	DEBUG[D_FLOW] << "CInputEnglish constructor" << endl;
+	DEBUG_FCT
 
     _map = &map;
     //_markovLength = 3; ???????????????????????
@@ -20,6 +20,7 @@ CInputEnglish::CInputEnglish(CMap &map)
 
 void CInputEnglish::ReadStdin()
 {
+	DEBUG_FCT
     char c;
     while (cin.get(c))
     {
@@ -29,7 +30,7 @@ void CInputEnglish::ReadStdin()
 
 int CInputEnglish::ReadFile(string filename)
 {
-	DEBUG[D_FLOW] << "CInputEnglish ReadFile" << endl;
+	DEBUG_FCT
 
     ifstream file;
     file.open( filename.c_str(), ifstream::in );
@@ -135,7 +136,6 @@ void CInputEnglish::parseText(char &c)
             //                    cout << c << endl;
             _currentWord += c;
     }
-
 }
 
 
