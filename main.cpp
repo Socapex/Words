@@ -77,7 +77,7 @@ void printHelp()
 int main(int argc, char* argv[])
 {
     //Marche pas, cest quoi ste marde la?
-	//DEBUG[D_FLOW] << "PROGRAM START_________________________________" << endl;
+	DEBUG[D_FLOW] << "PROGRAM START_________________________________" << endl;
 
     //Wait for debugger to attach
     //Mac only je pense...
@@ -212,7 +212,7 @@ int main(int argc, char* argv[])
 
 	//generateSentence(mymap, 1, 5);
 
-	//DEBUG[D_FLOW] << "PROGRAM END___________________________________" << endl;
+	DEBUG[D_FLOW] << "PROGRAM END___________________________________" << endl;
 
 	return 0;
 }
