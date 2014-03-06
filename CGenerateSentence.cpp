@@ -122,7 +122,7 @@ CMap CGenerateSentence::getNextMarkovWord(list<CMap> maps) const
         temp.pop_front();
     }
 
-    // Find the second word in original map, loosing the chain and starting anew.
+    // Find the second word in original map, loosing the chain and starting a new.
     // P.S. We remove the first word, and take the second as first.
     CMap newWord = _map->GetWordMap(temp.front().GetWord().GetString());
     temp.pop_front();
@@ -156,6 +156,7 @@ vector<pair<CTYPE> > CGenerateSentence::sortChildren(CMap map) const
 string CGenerateSentence::getRandomTopString(vector<pair<CTYPE> > sortedVector) const
 {
     // Bugfix si le vector est plus petit que le randomness
+	// Pas tant fix lol.
     int tempRand = sortedVector.size();
     if (tempRand > _randomness)
         tempRand = _randomness;

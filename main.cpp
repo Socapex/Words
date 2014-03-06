@@ -10,6 +10,7 @@ int main(int argc, char* argv[])
 	DEBUG[D_FLOW] << "PROGRAM START" << endl;
 
 	CMain cmain(argc, argv);
+	cmain.GetMap()->Print(DEBUG[D_OUT1]);
 
     //Get better randomness...
 	// Le srand devrait surment pas se trouver la. 

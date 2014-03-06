@@ -5,4 +5,4 @@ CGenerateSentence constructor
 CMain constructor
 COption init
 CInputEnglish ReadFile
-CGenerateSentence generate
+PROGRAM END

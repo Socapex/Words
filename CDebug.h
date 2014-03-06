@@ -14,6 +14,7 @@
 
 using namespace std;
 
+// Assert function with assert line and messsage.
 #define ASSERT(condition, message) \
 	if (!(condition)) {cerr << "Assert `" #condition "` failed in " \
 		<< __FILE__ << " line " << __LINE__ << ": " << message << endl; \

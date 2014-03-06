@@ -47,7 +47,7 @@ public:
     void SetWordCount (const int &count);
     void incrementWordCount();
 
-    void Print();
+	void Print(ostream& stream = cout);
 
     unsigned long GetSize() const;
 
