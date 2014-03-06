@@ -34,7 +34,10 @@ void CGenerateSentence::generate()
         // number of words!
         list<CMap> sentence = {_map->GetWordMap(getFirstSentenceWord())}; //Add first word
 
-        while ((int)sentence.size() < _map->getMarkovLength())
+		ATT_MARKOV_T* markov_att = ((ATT_MARKOV_T*)_map->GetWordAttribute("Markov"));
+		ASSERT(markov_att != nullptr, "Markov attribute doesn't exist.");
+
+		while ((int)sentence.size() < markov_att->GetValue())
         {
             // Get last word
             CMap newWord = sentence.back();
@@ -118,9 +121,11 @@ CMap CGenerateSentence::getNextMarkovWord(list<CMap> maps) const
 {
     list<CMap> temp = maps;
 
+	ATT_MARKOV_T* markov_att = ((ATT_MARKOV_T*)_map->GetWordAttribute("Markov"));
+	
     // Remove the unused first words (we are creating a list of words
     // that is markov length).
-    while ((int)temp.size() >= _map->getMarkovLength())
+	while ((int)temp.size() >= markov_att->GetValue())
     {
         temp.pop_front();
     }

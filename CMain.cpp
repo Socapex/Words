@@ -11,6 +11,9 @@ CMain::CMain(int argc, char* argv[]) :
 {
 	DEBUG[D_FLOW] << "CMain constructor" << endl;
 
+	// Add Markov chaine length argument to the first map.
+	_map.AddWordAttribute("Markov", new ATT_MARKOV_T(3));
+
 	init(argc, argv);
 }
 
@@ -34,7 +37,7 @@ void CMain::OnReadStdin()
 
 void CMain::OnSetMarkovChain(const int& length)
 {
-	_map.setMarkovLength(length);
+	((ATT_MARKOV_T*)_map.GetWordAttribute("Markov"))->SetValue(length);
 }
 
 void CMain::OnSetNumberSentence(const int& nb)

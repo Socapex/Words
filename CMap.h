@@ -51,6 +51,9 @@ public:
     void SetWordCount (const int &count);
     void incrementWordCount();
 
+	CAttribute* GetWordAttribute(const string& att);
+	bool AddWordAttribute(const string& att_name, CAttribute* att);
+
 	void Print(ostream& stream = cout);
 
     unsigned long GetSize() const;
@@ -62,8 +65,8 @@ public:
         return _map;
     }
 
-    void setMarkovLength(const int &len);
-    int getMarkovLength() const;
+    //void setMarkovLength(const int &len);
+    //int getMarkovLength() const;
 
 	//bool Save( const string& path );
 
@@ -73,7 +76,7 @@ public:
 private:
     map<CTYPE> _map;
     CWord _word;
-    int _markovLength;
+    //int _markovLength;
 };
 
 

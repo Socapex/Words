@@ -34,6 +34,7 @@ string CWord::GetString() const
     return _word;
 }
 
+/// @todo return a real value false or true.
 bool CWord::AddAttribute(const string& att_name, CAttribute* att)
 {
 	_map.insert(pair<string, CAttribute*>(att_name, att));

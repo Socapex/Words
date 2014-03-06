@@ -7,15 +7,12 @@ a    (2) size :     2
 and    (2) size :     2
 as    (2) size :     2
 be    (1) size :     1
-by    (1) size :     1
 chain    (1) size :     1
-close    (1) size :     1
 considering    (1) size :     1
 could    (1) size :     1
 daisies    (1) size :     1
 daisy    (1) size :     1
 day    (1) size :     1
-eyes    (1) size :     1
 feel    (1) size :     1
 for    (1) size :     1
 getting    (1) size :     1
@@ -28,9 +25,7 @@ mind    (1) size :     1
 of    (2) size :     2
 own    (1) size :     1
 picking    (1) size :     1
-pink    (1) size :     1
 pleasure    (1) size :     1
-ran    (1) size :     1
 she    (2) size :     2
 sleepy    (1) size :     1
 stupid    (1) size :     1

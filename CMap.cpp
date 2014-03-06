@@ -10,7 +10,7 @@ bool orderCMapByCount(pair<CTYPE> first, pair<CTYPE> second)
 
 CMap::CMap()
 {
-    _markovLength = 3;
+    //_markovLength = 3;
 }
 
 
@@ -35,6 +35,15 @@ CMap& CMap::insert(  const string& str  )
     return ret.first->second;
 }
 
+CAttribute* CMap::GetWordAttribute(const string& att)
+{
+	return (*GetWordPtr())[att];
+}
+
+bool CMap::AddWordAttribute(const string& att_name, CAttribute* att)
+{
+	return GetWordPtr()->AddAttribute(att_name, att);
+}
 
 CMap CMap::GetWordMap( const string& str ) const
 /// @todo What happen when the word "str" is not in the map.
@@ -44,7 +53,6 @@ CMap CMap::GetWordMap( const string& str ) const
 
     return notFound;
 }
-
 
 CWord CMap::GetWord() const
 {
@@ -74,7 +82,8 @@ void CMap::Print(ostream& stream)
 {
     for( CIterator i = _map.begin(); i != _map.end(); ++i )
     {
-        stream << i->second.GetWord().GetString() << "    (" << i->second.GetWord().GetCount() << ") ";
+        stream << i->second.GetWord().GetString() << "    (" 
+			   << i->second.GetWord().GetCount() << ") ";
         stream << "size :     " << i->second.GetSize() << endl;
     }
 }
@@ -95,16 +104,15 @@ void CMap::SetMap(map<CTYPE>& m)
 	_map = m;
 }
 
-
-void CMap::setMarkovLength(const int &len)
-{
-    _markovLength = len;
-}
-
-int CMap::getMarkovLength() const
-{
-    return _markovLength;
-}
+//void CMap::setMarkovLength(const int &len)
+//{
+//    _markovLength = len;
+//}
+//
+//int CMap::getMarkovLength() const
+//{
+//    return _markovLength;
+//}
 
 // Operators
 bool operator== (const CMap &map1, const CMap &map2)

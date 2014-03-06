@@ -19,8 +19,6 @@ class CAttribute
 {
 public:
     CAttribute(){}
-
-
 };
 
 template<typename T>
@@ -30,6 +28,10 @@ public:
 	CAtt() :
 		// Members
 		_att(0) {}
+
+	CAtt(const T& att) :
+		// Members
+		_att(att) {}
 
 	T& GetValue()
 	{
@@ -79,5 +81,8 @@ public:
 private:
     string _str;
 };
+
+
+typedef CAtt<unsigned int> ATT_MARKOV_T;
 
 #endif // DEF_C_ATTRIBUTE.

@@ -25,7 +25,7 @@ public:
 
     void ReadStdin();
     int ReadFile(string filename);
-    void setMarkovLength(const int& length);
+    //void setMarkovLength(const int& length);
 
 private:
     void parseText(char &c);
@@ -35,7 +35,7 @@ private:
 
     CMap* _map;
     list<string> _markovChain;
-    int _markovLength;
+    //int _markovLength;
     string _currentWord;
 };
 

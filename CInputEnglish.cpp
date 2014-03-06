@@ -13,7 +13,7 @@ CInputEnglish::CInputEnglish(CMap &map)
 	DEBUG[D_FLOW] << "CInputEnglish constructor" << endl;
 
     _map = &map;
-    _markovLength = 3;
+    //_markovLength = 3; ???????????????????????
     _currentWord.clear();
 }
 
@@ -147,14 +147,16 @@ void CInputEnglish::addWord()
     }
 
     //cout << _currentWord << endl;
+	ATT_MARKOV_T* markov_att = ((ATT_MARKOV_T*)_map->GetWordAttribute("Markov"));
+	unsigned int markov_length = markov_att->GetValue();
 
     // Check beginning of text
-    if ((int)_markovChain.size() < _map->getMarkovLength())
+	if ((int)_markovChain.size() < markov_length)
     {
         _markovChain.push_back(_currentWord);
 
         // Reached the correct size?
-        if ((int)_markovChain.size() == _map->getMarkovLength())
+		if ((int)_markovChain.size() == markov_length)
             insertChain();
     }
     else
@@ -190,7 +192,7 @@ void CInputEnglish::insertChain()
 }
 
 
-void CInputEnglish::setMarkovLength(const int &length)
-{
-    _markovLength = length;
-}
+//void CInputEnglish::setMarkovLength(const int &length)
+//{
+//    _markovLength = length;
+//}
