@@ -8,7 +8,7 @@ bool CDataBase::SaveData(const string& path)
 	//-----------------------------------------------------------
 	// Root.
 	//-----------------------------------------------------------
-	uint8_t s = _root.GetWord().GetString().size();
+	uint8_t s = (uint8_t)_root.GetWord().GetString().size();
 	unsigned long nCWord = _root.GetSize();
 
 	//cout << "ROOT SIZE : " << _root->GetSize() << endl;
@@ -25,7 +25,7 @@ bool CDataBase::SaveData(const string& path)
 
 	for (unsigned int i = 0; i < v.size(); ++i)
 	{
-		s = v[i].second.GetWord().GetString().size();
+		s = (uint8_t)v[i].second.GetWord().GetString().size();
 		nCWord = v[i].second.GetSize();
 
 		outfile.write((const char*)&s, 1);
@@ -38,7 +38,7 @@ bool CDataBase::SaveData(const string& path)
 
 		for (unsigned int n = 0; n < v2.size(); ++n)
 		{
-			s = v2[n].second.GetWord().GetString().size();
+			s = (uint8_t)v2[n].second.GetWord().GetString().size();
 			nCWord = v2[n].second.GetSize();
 
 			outfile.write((const char*)&s, 1);
@@ -51,7 +51,7 @@ bool CDataBase::SaveData(const string& path)
 
 			for (unsigned int k = 0; k < v3.size(); ++k)
 			{
-				s = v3[k].second.GetWord().GetString().size();
+				s = (uint8_t)v3[k].second.GetWord().GetString().size();
 				nCWord = v3[k].second.GetSize();
 
 				outfile.write((const char*)&s, 1);
@@ -133,4 +133,10 @@ bool CDataBase::ReadData(const string& path)
 	infile.close();
 
 	return true;
+}
+
+CDataBase& CDataBase::operator = (CDataBase& database)
+{
+	(void)database;
+	return *this;
 }

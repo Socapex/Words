@@ -1,3 +1,10 @@
+//
+//  CAttribute.h
+//  Words
+//
+//  Created by Alexandre Arsenault on 2014-03-06.
+//  Copyright (c) 2014 Alexandre Arsenault. All rights reserved.
+//
 #ifndef DEF_CWORD
 #define DEF_CWORD
 
@@ -10,7 +17,7 @@
 using namespace std;
 
 #define ATT_STRING ( 0 )
-#define ATT_COUNT ( 1 )
+#define ATT_COUNT  ( 1 )
 
 class CWord
 {

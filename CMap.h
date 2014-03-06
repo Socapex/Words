@@ -1,3 +1,10 @@
+//
+//  CMap.h
+//  Words
+//
+//  Created by Alexandre Arsenault on 2014-03-06.
+//  Copyright (c) 2014 Alexandre Arsenault. All rights reserved.
+//
 #ifndef DEF_CMAP
 #define DEF_CMAP
 
@@ -8,7 +15,7 @@
 #include "CWord.h"
 #include "CDebug.h"
 
-extern CDebug DEBUG;
+
 
 using namespace std;
 
@@ -18,8 +25,6 @@ class CMap;
 
 typedef pair<CTYPE> CPair;
 typedef map<CTYPE>::iterator CIterator;
-
-
 
 class CMap
 {

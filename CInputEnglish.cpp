@@ -10,6 +10,8 @@
 
 CInputEnglish::CInputEnglish(CMap &map)
 {
+	DEBUG[D_FLOW] << "CInputEnglish constructor" << endl;
+
     _map = &map;
     _markovLength = 3;
     _currentWord.clear();
@@ -27,6 +29,7 @@ void CInputEnglish::ReadStdin()
 
 int CInputEnglish::ReadFile(string filename)
 {
+	DEBUG[D_FLOW] << "CInputEnglish ReadFile" << endl;
 
     ifstream file;
     file.open( filename.c_str(), ifstream::in );
@@ -39,7 +42,7 @@ int CInputEnglish::ReadFile(string filename)
 
     while( file.good() )
     {
-        char c = file.get();   // get character from file
+        char c = (char)file.get();   // get character from file
 
         if( file.good() )
         {
@@ -146,12 +149,12 @@ void CInputEnglish::addWord()
     //cout << _currentWord << endl;
 
     // Check beginning of text
-    if (_markovChain.size() < _map->getMarkovLength())
+    if ((int)_markovChain.size() < _map->getMarkovLength())
     {
         _markovChain.push_back(_currentWord);
 
         // Reached the correct size?
-        if (_markovChain.size() == _map->getMarkovLength())
+        if ((int)_markovChain.size() == _map->getMarkovLength())
             insertChain();
     }
     else

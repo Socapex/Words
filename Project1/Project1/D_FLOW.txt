@@ -1,1 +1,6 @@
-PROGRAM START_________________________________
+PROGRAM START
+COption Constructor
+CInputEnglish constructor
+CGenerateSentence constructor
+CMain constructor
+COption init

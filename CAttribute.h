@@ -1,3 +1,10 @@
+//
+//  CAttribute.h
+//  Words
+//
+//  Created by Alexandre Arsenault on 2014-03-06.
+//  Copyright (c) 2014 Alexandre Arsenault. All rights reserved.
+//
 #ifndef DEF_C_ATTRIBUTE
 #define DEF_C_ATTRIBUTE
 

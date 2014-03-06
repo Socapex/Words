@@ -45,6 +45,8 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <MinimalRebuild>false</MinimalRebuild>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -70,8 +72,10 @@
     <ClCompile Include="..\..\CDebug.cpp" />
     <ClCompile Include="..\..\CGenerateSentence.cpp" />
     <ClCompile Include="..\..\CInputEnglish.cpp" />
+    <ClCompile Include="..\..\CMain.cpp" />
     <ClCompile Include="..\..\CMap.cpp" />
     <ClCompile Include="..\..\CDataBase.cpp" />
+    <ClCompile Include="..\..\COption.cpp" />
     <ClCompile Include="..\..\CWord.cpp" />
     <ClCompile Include="..\..\getopt.c" />
     <ClCompile Include="..\..\getopt_long.c" />
@@ -83,8 +87,10 @@
     <ClInclude Include="..\..\CDebug.h" />
     <ClInclude Include="..\..\CGenerateSentence.h" />
     <ClInclude Include="..\..\CInputEnglish.h" />
+    <ClInclude Include="..\..\CMain.h" />
     <ClInclude Include="..\..\CMap.h" />
     <ClInclude Include="..\..\CDataBase.h" />
+    <ClInclude Include="..\..\COption.h" />
     <ClInclude Include="..\..\CWord.h" />
     <ClInclude Include="..\..\getopt.h" />
   </ItemGroup>

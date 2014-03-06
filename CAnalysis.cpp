@@ -13,7 +13,6 @@ CAnalysis::CAnalysis(CMap& map)
     _map = &map;
 }
 
-
 void CAnalysis::PrintMostUsed(const int &num)
 {
     vector< pair<CTYPE> > myVec(_map->GetMap().begin(), _map->GetMap().end());

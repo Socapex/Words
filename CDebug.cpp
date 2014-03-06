@@ -1,5 +1,7 @@
 #include "CDebug.h"
 
+CDebug DEBUG;
+
 CDebug::CDebug()
 {
 	//cerr << "Error output." << endl;

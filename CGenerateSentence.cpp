@@ -5,12 +5,11 @@
 //  Created by Philippe Groarke on 2014-03-04.
 //  Copyright (c) 2014 Groarke & Co. All rights reserved.
 //
-
 #include "CGenerateSentence.h"
-
 
 CGenerateSentence::CGenerateSentence(CMap &map)
 {
+	DEBUG[D_FLOW] << "CGenerateSentence constructor" << endl;
     _map = &map;
 
     //Pretty much unused now...
@@ -24,6 +23,7 @@ CGenerateSentence::CGenerateSentence(CMap &map)
 
 void CGenerateSentence::generate()
 {
+	DEBUG[D_FLOW] << "CGenerateSentence generate" << endl;
     // Generate num sentences
     for (int i = 0; i < _numSentence; ++i)
     {
@@ -31,7 +31,7 @@ void CGenerateSentence::generate()
         // number of words!
         list<CMap> sentence = {_map->GetWordMap(getFirstSentenceWord())}; //Add first word
 
-        while (sentence.size() < _map->getMarkovLength())
+        while ((int)sentence.size() < _map->getMarkovLength())
         {
             // Get last word
             CMap newWord = sentence.back();
@@ -66,12 +66,12 @@ void CGenerateSentence::generate()
 
 void CGenerateSentence::Bruteforce()
 {
-
+	DEBUG[D_FLOW] << "CGenerateSentence Bruteforce" << endl;
 }
 
 void CGenerateSentence::GenerateFile()
 {
-
+	DEBUG[D_FLOW] << "CGenerateSentence GenerateFile" << endl;
 }
 
 // SETTERS/GETTERS
@@ -117,7 +117,7 @@ CMap CGenerateSentence::getNextMarkovWord(list<CMap> maps) const
 
     // Remove the unused first words (we are creating a list of words
     // that is markov length).
-    while (temp.size() >= _map->getMarkovLength())
+    while ((int)temp.size() >= _map->getMarkovLength())
     {
         temp.pop_front();
     }
@@ -159,6 +159,10 @@ string CGenerateSentence::getRandomTopString(vector<pair<CTYPE> > sortedVector) 
     int tempRand = sortedVector.size();
     if (tempRand > _randomness)
         tempRand = _randomness;
+
+	ASSERT(tempRand > 0, "Index under zero or equal zero.");
+	ASSERT(tempRand < int(sortedVector.size() - 1), "Index is larger than vector");
+
     return sortedVector[rand() % tempRand].first;
 }
 
