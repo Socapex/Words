@@ -97,7 +97,7 @@ int main(int argc, char* argv[])
         return 0;
     }
 
-    //http://www.gnu.org/software/libc/manual/html_node/Getopt-Long-Option-Example.html
+    //www.gnu.org/software/libc/manual/html_node/Getopt-Long-Option-Example.html
     static struct option long_options[] =
     {
         {"help",        no_argument,        0, 'h'},
@@ -154,6 +154,11 @@ int main(int argc, char* argv[])
                 generator.setNumSentence(atoi(optarg));
                 break;
             case 'r':
+                if (atoi(optarg) <= 0)
+                {
+                    cout << "Random value should be greater than 0." << endl;
+                    return -1;
+                }
                 generator.setRandomness(atoi(optarg));
                 break;
             case 'w':

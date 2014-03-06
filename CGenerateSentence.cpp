@@ -13,8 +13,10 @@ CGenerateSentence::CGenerateSentence(CMap &map)
 {
     _map = &map;
 
+    //Pretty much unused now...
     _sortedWordsByCount = sortChildren(map);
 
+    // Create a list of line terminators, currently latin only, could be anything!
     _sentenceTerminators.push_back(".");
     _sentenceTerminators.push_back("!");
     _sentenceTerminators.push_back("?");
@@ -45,9 +47,18 @@ void CGenerateSentence::generate()
             sentence.push_back(getNextMarkovWord(sentence));
         }
 
+        // TODO: Change this to give love to (, ; :) etc.
+        bool first = true;
         for (auto x : sentence)
         {
-            cout << x.GetWord().GetString() << " ";
+            if (first)
+            {
+                cout << x.GetWord().GetString();
+                first = false;
+            }
+
+            else
+                cout << " " << x.GetWord().GetString();
         }
         cout << endl;
     }
@@ -103,19 +114,24 @@ void CGenerateSentence::setMaxChars(const int &max)
 CMap CGenerateSentence::getNextMarkovWord(list<CMap> maps) const
 {
     list<CMap> temp = maps;
-    // Remove the unused first words
+
+    // Remove the unused first words (we are creating a list of words
+    // that is markov length).
     while (temp.size() >= _map->getMarkovLength())
     {
         temp.pop_front();
     }
 
     // Find the second word in original map, loosing the chain and starting anew.
+    // P.S. We remove the first word, and take the second as first.
     CMap newWord = _map->GetWordMap(temp.front().GetWord().GetString());
     temp.pop_front();
 
     // Get the last inner map
     for (const auto x : temp)
     {
+        // If our word isn't in the map... Probably a non-bug fixed with
+        // my const WAR!!! lol
         if (newWord.GetWordMap(x.GetWord().GetString()) == notFound)
             newWord = newWord.GetWordMap(getRandomTopString(sortChildren(newWord)));
         else
@@ -139,7 +155,7 @@ vector<pair<CTYPE> > CGenerateSentence::sortChildren(CMap map) const
 
 string CGenerateSentence::getRandomTopString(vector<pair<CTYPE> > sortedVector) const
 {
-    // Bug si le vector est plus petit que le randomness
+    // Bugfix si le vector est plus petit que le randomness
     int tempRand = sortedVector.size();
     if (tempRand > _randomness)
         tempRand = _randomness;
