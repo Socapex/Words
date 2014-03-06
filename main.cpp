@@ -12,11 +12,6 @@ int main(int argc, char* argv[])
 	CMain cmain(argc, argv);
 	cmain.GetMap()->Print(DEBUG[D_OUT1]);
 
-    //Get better randomness...
-	// Le srand devrait surment pas se trouver la. 
-	// (surment dans la classe generateSentence)
-    srand( (unsigned int)time( NULL ) );
-
 	//CDataBase data_base(mymap);
 	//data_base.SaveData("cdb");
 	//data_base.ReadData("cdb");

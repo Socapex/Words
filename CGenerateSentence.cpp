@@ -10,6 +10,9 @@
 CGenerateSentence::CGenerateSentence(CMap &map)
 {
 	DEBUG[D_FLOW] << "CGenerateSentence constructor" << endl;
+	//Get better randomness...
+	srand((unsigned int)time(NULL));
+
     _map = &map;
 
     //Pretty much unused now...
