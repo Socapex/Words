@@ -42,6 +42,10 @@ public:
     CMap GetWordMap(const string& str ) const;
 
     CWord GetWord() const;
+	CWord* GetWordPtr()
+	{
+		return &_word;
+	}
 
     void SetWord( const string& word );
     void SetWordCount (const int &count);

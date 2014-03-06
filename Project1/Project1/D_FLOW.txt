@@ -4,3 +4,5 @@ CInputEnglish constructor
 CGenerateSentence constructor
 CMain constructor
 COption init
+CInputEnglish ReadFile
+PROGRAM END

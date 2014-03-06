@@ -19,6 +19,30 @@ class CAttribute
 {
 public:
     CAttribute(){}
+
+
+};
+
+template<typename T>
+class CAtt: public CAttribute
+{
+public:
+	CAtt() :
+		// Members
+		_att(0) {}
+
+	T& GetValue()
+	{
+		return _att;
+	}
+
+	void SetValue(const T& v)
+	{
+		_att = v;
+	}
+
+private:
+	T _att;
 };
 
 class CCount : public CAttribute

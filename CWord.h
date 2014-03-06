@@ -11,7 +11,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
-
+#include <map>
 #include "CAttribute.h"
 
 using namespace std;
@@ -22,25 +22,22 @@ using namespace std;
 class CWord
 {
 public:
-    CWord():
-    // Members
-        _count( 0 )
-    {
-        _attributes.push_back( new CString( "MyString") );
-        _attributes.push_back( new CCount() );
-    }
+	CWord();
 
     CWord( const string& word ):
-    // Members
-        _word(word), _count(1)
+		   // Members
+           _word(word), _count(1)
     {
 
     }
 
     CAttribute* GetAttribute( const unsigned int& index )
     {
-        return (CAttribute*)(_attributes[index]);//->GetAttribute());
+        return (CAttribute*)(_attributes[index]);
     }
+
+	CAttribute* operator[](const string& att);
+	bool AddAttribute(const string& att_name, CAttribute* att);
 
     CLong GetCount() const;
 
@@ -51,6 +48,7 @@ public:
 
     string GetString() const;
 
+	// Why friend ??
     friend bool operator== (const CWord &word1, const CWord &word2);
 
 private:
@@ -58,6 +56,7 @@ private:
     CLong _count;
 
     vector< CAttribute* > _attributes;
+	map<string, CAttribute*> _map;
 };
 
 
