@@ -1,5 +1,7 @@
 #include "CMap.h"
 
+CDebug DEBUG;
+
 CMap::CMap()
 {
 }
@@ -25,6 +27,7 @@ CMap& CMap::insert(  const string& str  )
     return ret.first->second;
 }
 
+/// @todo What happen when the word "str" is not in the map.
 CMap& CMap::GetWordMap( const string& str )
 {
     return ( _map.find( str )->second );

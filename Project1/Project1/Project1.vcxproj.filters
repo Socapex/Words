@@ -39,6 +39,9 @@
     <ClCompile Include="..\..\getopt_long.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\CDebug.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\CAttribute.h">
@@ -57,6 +60,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\getopt.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\CDebug.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

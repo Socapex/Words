@@ -1,5 +1,7 @@
 #include "gtest/gtest.h"
 #include <iostream>
+#include "../CMap.h"
+#include "../CInputEnglish.h"
 
 using namespace std;
 
@@ -8,25 +10,53 @@ class CMapTest : public ::testing::Test
 protected:
 	CMapTest()
 	{
+		//CInputEnglish inputEnglish(_map);
 
+
+		
 	}
 
 	virtual void SetUp() 
 	{
-		_t = 82;
+		//_t = 82;
 	}
 
 	virtual void TearDown() 
 	{
 	}
 
-	int _t;
+
+	CMap _map;
 };
 
-TEST_F(CMapTest, CheckIntValue)
+TEST_F(CMapTest, CheckLoadingFile)
 {
-	//CMap m;
-	EXPECT_EQ(82, _t);
+	CInputEnglish inputEnglish(_map);
+	EXPECT_EQ(-1, inputEnglish.ReadFile("Text999.txt"));
+
+}
+
+TEST_F(CMapTest, CheckContent)
+{
+	CInputEnglish inputEnglish(_map);
+
+	// Sevent times "The".
+	// Five times "the".
+	inputEnglish.ReadFile("text1.txt");
+
+	EXPECT_EQ(7, _map.GetWordMap("The").GetWord().GetCount());
+	EXPECT_EQ(5, _map.GetWordMap("the").GetWord().GetCount());
+	EXPECT_EQ(5, _map.GetWordMap(".").GetWord().GetCount());
+	EXPECT_EQ(3, _map.GetWordMap(",").GetWord().GetCount());
+	EXPECT_EQ(1, _map.GetWordMap(";").GetWord().GetCount());
+}
+
+TEST_F(CMapTest, CheckRepeatingContent)
+{
+	CInputEnglish inputEnglish(_map);
+	inputEnglish.ReadFile("Text2.txt");
+
+	EXPECT_EQ(30, _map.GetWordMap("Alex").GetWord().GetCount());
 }
 
 int main(int argc, char **argv) 

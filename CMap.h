@@ -6,6 +6,9 @@
 
 #include <map>
 #include "CWord.h"
+#include "CDebug.h"
+
+extern CDebug DEBUG;
 
 using namespace std;
 

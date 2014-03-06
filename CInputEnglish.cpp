@@ -135,7 +135,7 @@ void CInputEnglish::addWord()
         return;
     }
 
-    cout << _currentWord << endl;
+    //cout << _currentWord << endl;
 
     // Check beginning of text
     if (_markovChain.size() < _markovLength)

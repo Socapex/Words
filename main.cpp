@@ -17,10 +17,10 @@
 #include "getopt.h"
 #endif
 
-
 #include "CMap.h"
 #include "CDataBase.h"
 #include "CInputEnglish.h"
+#include "CDebug.h"
 
 using namespace std;
 
@@ -28,8 +28,11 @@ void generateSentence(CMap& mymap,
 					  const unsigned int& length,
 					  const unsigned int& nb_sentense);
 
+//CDebug DEBUG;
+
 void printHelp()
 {
+
     cout << "########################" << endl
     << "Word Engine" << endl << "v0.01" << endl
     << "########################" << endl << endl;
@@ -113,6 +116,8 @@ CMap& GetFirstWord( CMap& m )
 
 int main(int argc, char* argv[])
 {
+	DEBUG[D_FLOW] << "PROGRAM START_________________________________" << endl;
+
     //Wait for debugger to attach
     //Mac only je pense...
     //kill(getpid(), SIGSTOP);
@@ -122,6 +127,8 @@ int main(int argc, char* argv[])
     CMap mymap;
     CInputEnglish inputEnglish(mymap);
 
+	//DEBUG.OUTPUT1() << "TEST1" << endl;
+	//DEBUG.OUTPUT2() << "TEST2" << endl;
 
     //MENU
     if (argc == 1)
@@ -187,6 +194,8 @@ int main(int argc, char* argv[])
 	data_base.ReadData("cdb");
 
 	generateSentence(mymap, 1, 5);
+
+	DEBUG[D_FLOW] << "PROGRAM END___________________________________" << endl;
 
 	return 0;
 }

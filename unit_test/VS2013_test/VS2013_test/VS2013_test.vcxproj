@@ -11,7 +11,22 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\CAttribute.cpp" />
+    <ClCompile Include="..\..\..\CDataBase.cpp" />
+    <ClCompile Include="..\..\..\CInputEnglish.cpp" />
+    <ClCompile Include="..\..\..\CMap.cpp" />
+    <ClCompile Include="..\..\..\CWord.cpp" />
+    <ClCompile Include="..\..\..\getopt.c" />
+    <ClCompile Include="..\..\..\getopt_long.c" />
     <ClCompile Include="..\..\main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\CAttribute.h" />
+    <ClInclude Include="..\..\..\CDataBase.h" />
+    <ClInclude Include="..\..\..\CInputEnglish.h" />
+    <ClInclude Include="..\..\..\CMap.h" />
+    <ClInclude Include="..\..\..\CWord.h" />
+    <ClInclude Include="..\..\..\getopt.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{D4E9AD7F-8222-494C-970B-55BD5751DAD1}</ProjectGuid>
