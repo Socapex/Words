@@ -65,8 +65,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\CAnalysis.cpp" />
     <ClCompile Include="..\..\CAttribute.cpp" />
     <ClCompile Include="..\..\CDebug.cpp" />
+    <ClCompile Include="..\..\CGenerateSentence.cpp" />
     <ClCompile Include="..\..\CInputEnglish.cpp" />
     <ClCompile Include="..\..\CMap.cpp" />
     <ClCompile Include="..\..\CDataBase.cpp" />
@@ -76,8 +78,10 @@
     <ClCompile Include="..\..\main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\CAnalysis.h" />
     <ClInclude Include="..\..\CAttribute.h" />
     <ClInclude Include="..\..\CDebug.h" />
+    <ClInclude Include="..\..\CGenerateSentence.h" />
     <ClInclude Include="..\..\CInputEnglish.h" />
     <ClInclude Include="..\..\CMap.h" />
     <ClInclude Include="..\..\CDataBase.h" />

@@ -1,6 +1,6 @@
 #include "CMap.h"
 
-//CDebug DEBUG;
+CDebug DEBUG;
 
 CMap notFound;
 

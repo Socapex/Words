@@ -2,7 +2,7 @@
 
 CDebug::CDebug()
 {
-	cerr << "Error output." << endl;
+	//cerr << "Error output." << endl;
 
 	_outs[D_FLOW].open("D_FLOW.txt", ofstream::out);
 

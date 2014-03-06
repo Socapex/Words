@@ -8,7 +8,7 @@
 #include "CWord.h"
 #include "CDebug.h"
 
-//extern CDebug DEBUG;
+extern CDebug DEBUG;
 
 using namespace std;
 
