@@ -23,6 +23,7 @@ public:
 
     void PrintMostUsed(const int &num);
     CMap GetMostUsed() const;
+	void PrintSorted(ostream& stream = cout);
 
 
 private:

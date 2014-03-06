@@ -27,8 +27,14 @@ void CMain::OnReadFile(const string& str)
 	DEBUG_FCT
 	if (_inputEnglish.ReadFile(str) == -1)
 	{
-		exit(0);
+		DEBUG_EXIT(0, "Couldn't open" << str);
 	}
+}
+
+void CMain::OnDebug()
+{
+	DEBUG_FCT
+	DEBUG.Show();
 }
 
 void CMain::OnReadStdin()

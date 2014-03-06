@@ -21,6 +21,18 @@ public:
 	CMain();
 
 	CMap* GetMap();
+	CInputEnglish* GetCInputEnglish()
+	{
+		return &_inputEnglish;
+	}
+	CGenerateSentence* GetCGenerateSentence()
+	{
+		return &_generator;
+	}
+	CAnalysis* GetCAnalysis()
+	{
+		return &_analyser;
+	}
 
 private:
 	CMap _map;
@@ -39,6 +51,7 @@ private:
 	virtual void OnSetMaxChars(const int& max_char);
 	virtual void OnGenerate();
 	virtual void OnPrintMostUsed(const int& num);
+	virtual void OnDebug();
 };
 
 #endif // DEF_C_MAIN.

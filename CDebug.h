@@ -21,6 +21,9 @@ using namespace std;
 #define FCT_NAME __FUNCTION__ 
 #endif
 
+#define DEBUG_EXIT(value, text) DEBUG[D_FLOW] << \
+								"EXIT : " << text << endl; exit(value)
+
 #define DEBUG_FCT DEBUG[D_FLOW] << FCT_NAME << endl;
 
 
@@ -44,9 +47,11 @@ public:
 	~CDebug();
 
 	ofstream& operator[] (const CDebugOutputList& out);
+	void Show();
 
 private:
 	ofstream _outs[3];
+	bool _show;
 };
 
 extern CDebug DEBUG;

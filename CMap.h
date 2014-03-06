@@ -10,6 +10,7 @@
 
 #include <iostream>
 #include <string>
+#include <iomanip>
 
 #include <map>
 #include "CWord.h"
@@ -55,6 +56,7 @@ public:
 	bool AddWordAttribute(const string& att_name, CAttribute* att);
 
 	void Print(ostream& stream = cout);
+	
 
     unsigned long GetSize() const;
 
@@ -65,24 +67,18 @@ public:
         return _map;
     }
 
-    //void setMarkovLength(const int &len);
-    //int getMarkovLength() const;
-
-	//bool Save( const string& path );
-
-    //CWord& operator[] ( const string& str );
     friend bool operator== (const CMap &map1, const CMap &map2);
 
 private:
     map<CTYPE> _map;
     CWord _word;
-    //int _markovLength;
 };
 
 
 // Function pointer
 extern bool orderCMapByCount(pair<CTYPE> first, pair<CTYPE> second);
 
-extern CMap notFound; // Une map retourner quand ca trouve rien... P-e pas tres nice
+
+extern CMap notFound; // Un map pour retourner quand ca trouve rien... P-e pas tres nice
 
 #endif

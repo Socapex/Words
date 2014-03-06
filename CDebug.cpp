@@ -2,7 +2,9 @@
 
 CDebug DEBUG;
 
-CDebug::CDebug()
+CDebug::CDebug() :
+		// Members
+		_show(0)
 {
 	//cerr << "Error output." << endl;
 
@@ -37,6 +39,20 @@ CDebug::~CDebug()
 	_outs[D_FLOW].close();
 	_outs[D_OUT1].close();
 	_outs[D_OUT2].close();
+
+	if (_show)
+	{
+#if __APPLE__
+
+#else
+		_wexecl(L"C:/Python27/python.exe", L"C:/Python27/python.exe C:/Words/debug.py", NULL);
+#endif
+	}	
+}
+
+void CDebug::Show()
+{
+	_show = true;
 }
 
 ofstream& CDebug::operator[] (const CDebugOutputList& out)

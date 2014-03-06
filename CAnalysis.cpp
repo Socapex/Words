@@ -34,3 +34,21 @@ void CAnalysis::PrintMostUsed(const int &num)
     cout << endl;
 }
 
+void CAnalysis::PrintSorted(ostream& stream)
+{
+	DEBUG_FCT
+
+	vector< pair<CTYPE> > myVec(_map->GetMap().begin(), _map->GetMap().end());
+	sort(myVec.begin(), myVec.end(), &orderCMapByCount);
+
+	stream << setw(8) << left << "Count" << "Word" << endl;
+	stream << setw(8) << left << "-----" << "----" << endl;
+	
+	for (auto n : myVec)
+	{
+		stream << setw(5) << right << n.second.GetWord().GetCount() << setfill(' ')
+			 << "   " << n.first << endl;
+	}
+	stream << endl;
+}
+

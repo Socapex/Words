@@ -9,11 +9,16 @@ void COption::init(int argc, char* argv[])
 {
 	DEBUG_FCT
 
+	for (int i = 0; i < argc; i++) 
+		DEBUG[D_FLOW] << argv[i] << " ";
+	DEBUG[D_FLOW] << endl;
+	
+
 	//MENU
 	if (argc == 1)
 	{
 		printHelp();
-		exit(0);
+		DEBUG_EXIT(0, "argc == 1");
 	}
 
 	static struct option long_options[] =
@@ -38,52 +43,57 @@ void COption::init(int argc, char* argv[])
 
 		//Analysis & Debug
 		{ "top-words", required_argument, 0, 't' },
+		//Debug
+		{ "DEBUG", no_argument, 0, 'D' },
 		{ 0, 0, 0, 0 }
 	};
 
 	int option_index = 0;
 
 	int opt = 0;
-	while ((opt = getopt_long(argc, argv, "hsm:i:sn:r:w:W:c:C:SBo:", long_options, &option_index))
+	while ((opt = getopt_long(argc, argv, "hsm:Di:sn:r:w:W:c:C:SBo:", long_options, &option_index))
 		!= -1)
 	{
 		switch (opt)
 		{
-			//Input
-		case 'i': OnReadFile((string)optarg); break;
-		case 'm': OnSetMarkovChain(atoi(optarg)); break;
-		case 's': OnReadStdin(); break;
-			//Output
-		case 'n': OnSetNumberSentence(atoi(optarg)); break;
-		case 'w': OnSetMinWords(atoi(optarg)); break;
-		case 'W': OnSetMaxWords(atoi(optarg)); break;
-		case 'c': OnSetMinChars(atoi(optarg)); break;
-		case 'C': OnSetMaxChars(atoi(optarg)); break;
-		case 'S': OnGenerate(); break;
-			//Analysis
-		case 't': OnPrintMostUsed(atoi(optarg)); break;
+			// Input
+			case 'i': OnReadFile((string)optarg); break;
+			case 'm': OnSetMarkovChain(atoi(optarg)); break;
+			case 's': OnReadStdin(); break;
+			// Output
+			case 'n': OnSetNumberSentence(atoi(optarg)); break;
+			case 'w': OnSetMinWords(atoi(optarg)); break;
+			case 'W': OnSetMaxWords(atoi(optarg)); break;
+			case 'c': OnSetMinChars(atoi(optarg)); break;
+			case 'C': OnSetMaxChars(atoi(optarg)); break;
+			case 'S': OnGenerate(); break;
+			// Debug
+			case 'D': OnDebug(); break;
+			// Analysis
+			case 't': OnPrintMostUsed(atoi(optarg)); break;
 
-		case 'r':
-			if (atoi(optarg) <= 0)
-			{
-				cout << "Random value should be greater than 0." << endl;
-				exit(0);
-			}
-			OnSetRandomness(atoi(optarg));
-			break;
+			case 'r':
+				if (atoi(optarg) <= 0)
+				{
+					cout << "Random value should be greater than 0." << endl;
+					DEBUG_EXIT(0, "Random value should be greater than 0.");
+				}
+				OnSetRandomness(atoi(optarg));
+				break;
 
-		case 'h':
-			printHelp();
-			exit(0);
-			break;
-		case '?':
-			cout << "What happened?" << endl;
-			exit(0);
-			break;
+			case 'h':
+				printHelp();
+				DEBUG_EXIT(0, "Print Help.");
+				break;
 
-		default:
-			printHelp();
-			exit(0);
+			case '?':
+				cout << "What happened?" << endl;
+				DEBUG_EXIT(0, "What happened?");
+				break;
+
+			default:
+				printHelp();
+				DEBUG_EXIT(0, "PrintHelp");	
 		}
 	}
 }

@@ -82,12 +82,11 @@ void CMap::Print(ostream& stream)
 {
     for( CIterator i = _map.begin(); i != _map.end(); ++i )
     {
-        stream << i->second.GetWord().GetString() << "    (" 
+		stream << setw(15) << left << setfill(' ') << i->second.GetWord().GetString() << "("
 			   << i->second.GetWord().GetCount() << ") ";
-        stream << "size :     " << i->second.GetSize() << endl;
+        stream << "size : " << i->second.GetSize() << endl;
     }
 }
-
 
 unsigned long CMap::GetSize() const
 {
@@ -103,16 +102,6 @@ void CMap::SetMap(map<CTYPE>& m)
 	}
 	_map = m;
 }
-
-//void CMap::setMarkovLength(const int &len)
-//{
-//    _markovLength = len;
-//}
-//
-//int CMap::getMarkovLength() const
-//{
-//    return _markovLength;
-//}
 
 // Operators
 bool operator== (const CMap &map1, const CMap &map2)

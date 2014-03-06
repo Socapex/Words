@@ -42,6 +42,7 @@ private:
 	virtual void OnSetMaxChars(const int& max_char){ (void)max_char; }
 	virtual void OnGenerate(){}
 	virtual void OnPrintMostUsed(const int& num){ (void)num; }
+	virtual void OnDebug(){}
 };
 
 #endif // DEF_C_OPTION.
