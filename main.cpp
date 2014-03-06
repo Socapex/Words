@@ -71,9 +71,6 @@ void printHelp()
 }
 
 
-
-
-
 int main(int argc, char* argv[])
 {
     //Marche pas, cest quoi ste marde la?
@@ -91,10 +88,9 @@ int main(int argc, char* argv[])
     CAnalysis analyser(mymap);
 
     //Get better randomness...
+	// Le srand devrait surment pas se trouver la. 
+	// (surment dans la classe generateSentence)
     srand( (unsigned int)time( NULL ) );
-
-	//DEBUG.OUTPUT1() << "TEST1" << endl;
-	//DEBUG.OUTPUT2() << "TEST2" << endl;
 
     //MENU
     if (argc == 1)
@@ -103,6 +99,7 @@ int main(int argc, char* argv[])
         return 0;
     }
 
+	// De ici ----------------------------------------------------------------------
     //www.gnu.org/software/libc/manual/html_node/Getopt-Long-Option-Example.html
     static struct option long_options[] =
     {
@@ -202,7 +199,9 @@ int main(int argc, char* argv[])
                 break;
         }
     }
-
+	// A ici ----------------------------------------------------------
+	// On pourrait surment metre sa dans une fonction ou 
+	// ajouter une classe qui gere le help et etc.
 
 	//readfile("test.txt", mymap);
 
