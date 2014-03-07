@@ -6,8 +6,17 @@ CGenerateSentence::CGenerateSentence
 CAnalysis::CAnalysis
 CMain::CMain
 COption::init
-Words.exe -i ../../text.txt 
+Words.exe -i ../../short-alice.txt --top-words 10 -r 5 -n 10 --stdout 
 CMain::OnReadFile
 CInputEnglish::ReadFile
+CMain::OnPrintMostUsed
+CAnalysis::PrintMostUsed
+CMain::OnSetRandomness
+CGenerateSentence::setRandomness
+CMain::OnSetNumberSentence
+CGenerateSentence::setNumSentence
+CMain::OnGenerate
+CGenerateSentence::generate
+CAnalysis::PrintSorted
 PROGRAM END
 CDebug::~CDebug

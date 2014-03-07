@@ -34,7 +34,7 @@ void CMain::OnReadFile(const string& str)
 void CMain::OnDebug()
 {
 	DEBUG_FCT
-	DEBUG.Show();
+	m_DEBUG.Show();
 }
 
 void CMain::OnReadStdin()

@@ -18,17 +18,17 @@ using namespace std;
 
 #if __APPLE__
 /// @todo Find macro for demangled function name. 
-#define __func__
+#define FCT_NAME __func__
 #else
 #define FCT_NAME __FUNCTION__ 
 #endif
 
 // Output exit message in program flow output.
-#define DEBUG_EXIT(value, text) DEBUG[D_FLOW] << \
+#define DEBUG_EXIT(value, text) m_DEBUG[D_FLOW] << \
 								"EXIT : " << text << endl; exit(value)
 
 // Output function name in program flow output.
-#define DEBUG_FCT DEBUG[D_FLOW] << FCT_NAME << endl;
+#define DEBUG_FCT m_DEBUG[D_FLOW] << FCT_NAME << endl;
 
 // Assert function with assert line and messsage.
 #define ASSERT(condition, message) \
@@ -60,6 +60,6 @@ private:
 	bool _show;
 };
 
-extern CDebug DEBUG;
+extern CDebug m_DEBUG;
 
 #endif // DEF_C_DEBUG.

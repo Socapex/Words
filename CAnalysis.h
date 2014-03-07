@@ -25,7 +25,6 @@ public:
     CMap GetMostUsed() const;
 	void PrintSorted(ostream& stream = cout);
 
-
 private:
     CMap* _map;
 };

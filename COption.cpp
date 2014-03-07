@@ -10,8 +10,8 @@ void COption::init(int argc, char* argv[])
 	DEBUG_FCT
 
 	for (int i = 0; i < argc; i++) 
-		DEBUG[D_FLOW] << argv[i] << " ";
-	DEBUG[D_FLOW] << endl;
+		m_DEBUG[D_FLOW] << argv[i] << " ";
+	m_DEBUG[D_FLOW] << endl;
 	
 
 	//MENU

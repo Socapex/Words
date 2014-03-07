@@ -9,5 +9,6 @@ COption::init
 C:\Words\Project1\Debug\Words.exe -i ../../text3.txt 
 CMain::OnReadFile
 CInputEnglish::ReadFile
+CAnalysis::PrintSorted
 PROGRAM END
 CDebug::~CDebug

@@ -5,7 +5,6 @@
 //  Created by Philippe Groarke on 2014-03-03.
 //  Copyright (c) 2014 Groarke & Co. All rights reserved.
 //
-
 #include "CInputEnglish.h"
 
 CInputEnglish::CInputEnglish(CMap &map)

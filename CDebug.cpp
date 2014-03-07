@@ -1,6 +1,6 @@
 #include "CDebug.h"
 
-CDebug DEBUG;
+CDebug m_DEBUG;
 
 void CProgressBar(const double& value0_1, const string& msg)
 {

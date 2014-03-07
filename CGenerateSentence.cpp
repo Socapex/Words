@@ -122,7 +122,6 @@ void CGenerateSentence::setMaxChars(const int &max)
 
 // PRIVATE
 
-
 CMap CGenerateSentence::getNextMarkovWord(list<CMap> maps) const
 {
     list<CMap> temp = maps;
@@ -176,7 +175,7 @@ string CGenerateSentence::getRandomTopString(vector<pair<CTYPE> > sortedVector) 
         tempRand = _randomness;
 
 	ASSERT(tempRand > 0, "Index under zero or equal zero.");
-	ASSERT(tempRand < int(sortedVector.size() - 1), "Index is larger than vector");
+	//ASSERT(tempRand < int(sortedVector.size() - 1), "Index is larger than vector");
 
     return sortedVector[rand() % tempRand].first;
 }
